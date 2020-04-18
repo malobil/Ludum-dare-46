@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private BuildingDatas m_SelectedBuild;
     
-    private float actualMoney ;
+   public float actualMoney ;
 
     private PlayerInput inputs ;
     private Vector2 mousePosition;
@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
                 if (hitInfo.transform.gameObject.GetComponentInParent<IConstructable>() != null)
                 {
                     hitInfo.transform.gameObject.GetComponentInParent<IConstructable>().Construct(m_SelectedBuild);
+                    actualMoney -= m_SelectedBuild.cost;
                 }
             }
             

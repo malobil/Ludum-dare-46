@@ -14,7 +14,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public void Setup(ConstructableTerrain constructTile)
     {
-        previousTile = constructTile;
+        previousTile = constructTile;   
     }
 
     // Start is called before the first frame update

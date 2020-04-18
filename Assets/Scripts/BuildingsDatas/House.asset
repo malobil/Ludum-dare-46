@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
-  m_Name: HouseDown
+  m_Name: House
   m_EditorClassIdentifier: 
   buildingName: House
   cost: 5

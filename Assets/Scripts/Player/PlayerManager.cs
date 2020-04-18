@@ -7,7 +7,8 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Singleton { get; private set; }
 
     [SerializeField] private BuildingDatas m_SelectedBuild;
-    private GameObject previewGameObject;
+    private GameObject actualPreviewBuilding;
+    private List<GameObject> previewBuildingList = new List<GameObject>();
 
     private int selectedBuildingRotation = 0;
     
@@ -51,19 +52,70 @@ public class PlayerManager : MonoBehaviour
         UIManager.Singleton.UpdateFoodText(actualFood);
         UIManager.Singleton.UpdatePopulationText(actualPeople);
         UIManager.Singleton.UpdateWaterText(actualWater);
+        SetNewBuilding(m_SelectedBuild); //DEBUG TO DELETE
     }
 
     // Update is called once per frame
     void Update()
     {
         mousePosition = inputs.InGameInputs.MousePosition.ReadValue<Vector2>();
+        PreviewBuild();
     }
 
     public void SetNewBuilding(BuildingDatas newSelectedBuilding)
     {
         m_SelectedBuild = newSelectedBuilding;
-        previewGameObject = Instantiate(newSelectedBuilding.prefabs[0]);
+        SetupPreviewObjects();
+    }
 
+    private void SetupPreviewObjects()
+    {
+        for(int i = 0; i < m_SelectedBuild.prefabs.Count; i++)
+        {
+            GameObject spawnedPrefab = Instantiate(m_SelectedBuild.prefabs[i]);
+
+            foreach (Transform childs in spawnedPrefab.transform)
+            {
+                if (childs.GetComponent<Renderer>())
+                {
+                    Renderer childRendComp = childs.GetComponent<Renderer>();
+                    SetMaterialTransparent(childRendComp.material);
+                    childRendComp.material.color
+                        = new Color(childRendComp.material.color.r, childRendComp.material.color.g, childRendComp.material.color.b, 0.5f);
+                    childRendComp.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                    childRendComp.receiveShadows = false;
+                }
+
+                if (childs.GetComponent<Collider>())
+                {
+                    childs.GetComponent<Collider>().enabled = false;
+                }
+            }
+
+            spawnedPrefab.SetActive(false);
+            previewBuildingList.Add(spawnedPrefab);
+        }
+
+        actualPreviewBuilding = previewBuildingList[0];
+    }
+
+    private void PreviewBuild()
+    {
+        if (m_SelectedBuild != null)
+        {
+            Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(mouseRay, out hitInfo) && hitInfo.transform.gameObject.GetComponentInParent<IConstructable>() != null)
+            {
+                    actualPreviewBuilding.transform.position = hitInfo.transform.position;
+                    actualPreviewBuilding.SetActive(true);
+            }
+            else
+            {
+                actualPreviewBuilding.SetActive(false);
+            }
+        }
     }
 
     private void Build()
@@ -129,6 +181,9 @@ public class PlayerManager : MonoBehaviour
             {
                 selectedBuildingRotation--;
             }
+
+            actualPreviewBuilding.SetActive(false);
+            actualPreviewBuilding = previewBuildingList[selectedBuildingRotation];
         }
        
     }
@@ -145,6 +200,9 @@ public class PlayerManager : MonoBehaviour
             {
                 selectedBuildingRotation++;
             }
+
+            actualPreviewBuilding.SetActive(false);
+            actualPreviewBuilding = previewBuildingList[selectedBuildingRotation];
         }
     }
 
@@ -188,6 +246,18 @@ public class PlayerManager : MonoBehaviour
     {
         actualPeople += addedValue;
         UIManager.Singleton.UpdatePopulationText(actualPeople);
+    }
+
+    void SetMaterialTransparent(Material mat)
+    {
+        mat.SetOverrideTag("RenderType", "Transparent");
+        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        mat.SetInt("_ZWrite", 0);
+        mat.DisableKeyword("_ALPHATEST_ON");
+        mat.EnableKeyword("_ALPHABLEND_ON");
+        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
     }
 
 }

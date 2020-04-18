@@ -670,6 +670,11 @@ PrefabInstance:
       propertyPath: actualMoney
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3915769754764973936, guid: ae980b50d7f4f104da1e793ec15c0500,
+        type: 3}
+      propertyPath: test.m_Bits
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 3915769754764973938, guid: ae980b50d7f4f104da1e793ec15c0500,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a040fd8dee714f34c94a03b8fe1603d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 002efb9f6b1138c409cf97087efb7b54, type: 2}
+  collectButton: {fileID: 4918872563869294723}
 --- !u!1 &4551123108793965817
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,15 +242,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1627966575626297526}
     m_Modifications:
-    - target: {fileID: 1698510492661839304, guid: 64b8ae491725eee4396feacf45c64845,
-        type: 3}
-      propertyPath: m_Name
-      value: Button
-      objectReference: {fileID: 0}
     - target: {fileID: 3625902865900215899, guid: 64b8ae491725eee4396feacf45c64845,
         type: 3}
       propertyPath: m_Name
       value: PrefabCollectButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625902865900215899, guid: 64b8ae491725eee4396feacf45c64845,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8291773322415444366, guid: 64b8ae491725eee4396feacf45c64845,
         type: 3}
@@ -357,6 +359,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b8ae491725eee4396feacf45c64845, type: 3}
+--- !u!1 &4918872563869294723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3625902865900215899, guid: 64b8ae491725eee4396feacf45c64845,
+    type: 3}
+  m_PrefabInstance: {fileID: 8508025352316370648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &360525587920957270 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8291773322415444366, guid: 64b8ae491725eee4396feacf45c64845,

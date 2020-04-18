@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d7ab514dc97b314e95892d3dc5dd1d5
+guid: 4053e7896147ec143b3fd52346c03ac0
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -24,7 +24,7 @@ ScriptedImporter:
       lightmapFlags: 4
       texEnvs:
       - name: _BumpMap
-        texture: {fileID: -4208401494178273811, guid: 9d7ab514dc97b314e95892d3dc5dd1d5,
+        texture: {fileID: -4208401494178273811, guid: 4053e7896147ec143b3fd52346c03ac0,
           type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
@@ -45,7 +45,7 @@ ScriptedImporter:
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _MainTex
-        texture: {fileID: 6789488959164385899, guid: 9d7ab514dc97b314e95892d3dc5dd1d5,
+        texture: {fileID: 6789488959164385899, guid: 4053e7896147ec143b3fd52346c03ac0,
           type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
@@ -126,8 +126,8 @@ ScriptedImporter:
       textureHeight: 2048
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {fileID: -6000546611934083101, guid: 9d7ab514dc97b314e95892d3dc5dd1d5,
+    material: {fileID: -6000546611934083101, guid: 4053e7896147ec143b3fd52346c03ac0,
       type: 3}
     generatedTextures:
-    - {fileID: 6789488959164385899, guid: 9d7ab514dc97b314e95892d3dc5dd1d5, type: 3}
-    - {fileID: -4208401494178273811, guid: 9d7ab514dc97b314e95892d3dc5dd1d5, type: 3}
+    - {fileID: 6789488959164385899, guid: 4053e7896147ec143b3fd52346c03ac0, type: 3}
+    - {fileID: -4208401494178273811, guid: 4053e7896147ec143b3fd52346c03ac0, type: 3}

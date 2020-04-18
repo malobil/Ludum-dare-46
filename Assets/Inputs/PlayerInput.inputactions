@@ -1,0 +1,82 @@
+{
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "InGameInputs",
+            "id": "98faa84a-c851-4188-b471-5e36ca564e87",
+            "actions": [
+                {
+                    "name": "Construct",
+                    "type": "Button",
+                    "id": "1c6c5929-e963-4036-828b-5a7c5c2166b4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "d46ab858-ce17-4373-b2c5-f46bd37006ee",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UnConstruct",
+                    "type": "Button",
+                    "id": "f3f7c362-cf57-4cd2-8c29-53cd4064b0e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "25d50f86-e88e-4643-8cc7-a9099dd5bb51",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Construct",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "528d3641-d9c2-46ac-b820-e48692a02186",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Construct",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a79c44de-6c76-4459-af4a-2151aca68a16",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27887716-fc6d-426b-95bf-7e6b9f29c2af",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UnConstruct",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

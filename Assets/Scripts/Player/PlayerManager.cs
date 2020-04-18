@@ -78,6 +78,11 @@ public class PlayerManager : MonoBehaviour
 
     private void SetupPreviewObjects()
     {
+        foreach(GameObject previews in previewBuildingList)
+        {
+            Destroy(previews);
+        }
+
         previewBuildingList.Clear();
         selectedBuildingRotation = 0;
 

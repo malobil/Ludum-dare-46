@@ -12,22 +12,38 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     public virtual void UnContruct()
     {
         previousTile.ShowThis();
+        PlayerManager.Singleton.AddMoney(data.cost / 2f);
+        DestroyMe();
+    }
+
+    public void Setup(ConstructableTerrain constructTile, BuildingDatas newDatas)
+    {
+        previousTile = constructTile;
+        data = newDatas;
+    }
+
+    public virtual void OnEnter()
+    {
+        if (canBeCollected)
+        {
+            StartCoroutine(cooldownMoney());
+        }
+    }
+
+    public virtual void DestroyMe()
+    {
         Destroy(gameObject);
     }
 
-    public void Setup(ConstructableTerrain constructTile)
+    public virtual void OnUpdate()
     {
-        previousTile = constructTile;   
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if(canBeCollected)
-        {
-            StartCoroutine(cooldownMoney());
-        }
-       
+        OnEnter();
     }
 
     IEnumerator cooldownMoney()

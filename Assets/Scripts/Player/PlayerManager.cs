@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private BuildingDatas m_SelectedBuild;
+    
+    private float actualMoney ;
 
     private PlayerInput inputs ;
     private Vector2 mousePosition;
@@ -24,10 +26,14 @@ public class PlayerManager : MonoBehaviour
 
         if (Physics.Raycast(mouseRay, out hitInfo))
         {
-            if(hitInfo.transform.gameObject.GetComponentInParent<IConstructable>() != null)
+            if(actualMoney >= m_SelectedBuild.cost)
             {
-                hitInfo.transform.gameObject.GetComponentInParent<IConstructable>().Construct(m_SelectedBuild);
+                if (hitInfo.transform.gameObject.GetComponentInParent<IConstructable>() != null)
+                {
+                    hitInfo.transform.gameObject.GetComponentInParent<IConstructable>().Construct(m_SelectedBuild);
+                }
             }
+            
         }
     }
 

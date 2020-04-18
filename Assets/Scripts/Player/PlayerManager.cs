@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Singleton { get; private set; }
 
     [SerializeField] private BuildingDatas m_SelectedBuild;
+    private GameObject previewGameObject;
 
     private int selectedBuildingRotation = 0;
     
@@ -58,6 +59,13 @@ public class PlayerManager : MonoBehaviour
         mousePosition = inputs.InGameInputs.MousePosition.ReadValue<Vector2>();
     }
 
+    public void SetNewBuilding(BuildingDatas newSelectedBuilding)
+    {
+        m_SelectedBuild = newSelectedBuilding;
+        previewGameObject = Instantiate(newSelectedBuilding.prefabs[0]);
+
+    }
+
     private void Build()
     {
         if(m_SelectedBuild != null)
@@ -76,7 +84,6 @@ public class PlayerManager : MonoBehaviour
                         UIManager.Singleton.UpdateMoneyText(actualMoney);
                     }
                 }
-
             }
         }
     }

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class RoadDetector : MonoBehaviour
 {
-    private Road associateRoad;
+    private Building associateRoad;
 
-    private Road connectedRoad;
+    private Building connectedRoad;
 
     private void Start()
     {
-        associateRoad = GetComponentInParent<Road>();
+        associateRoad = GetComponentInParent<Building>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        connectedRoad = other.gameObject.GetComponentInParent<Road>();
+        connectedRoad = other.gameObject.GetComponentInParent<Building>();
         associateRoad.ConnectRoad(connectedRoad);
     }
 

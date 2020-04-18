@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IConstructable
 {
-    void Construct(BuildingDatas buildingToBuild);
+    void Construct(BuildingDatas buildingToBuild, int rotation);
 }

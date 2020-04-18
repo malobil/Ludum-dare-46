@@ -65,6 +65,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""68d49809-8142-4db4-ac40-08aae45ce50f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e79f008-9cbd-40b8-8e08-ce6734d84b04"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -188,6 +204,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""MouseDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58d16f25-fb7a-4d8b-8b2b-38d3fd343b0b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1979a61c-ef4f-495c-986e-791e344b19ed"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -202,6 +240,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_InGameInputs_CameraMovement = m_InGameInputs.FindAction("CameraMovement", throwIfNotFound: true);
         m_InGameInputs_RotateCamera = m_InGameInputs.FindAction("RotateCamera", throwIfNotFound: true);
         m_InGameInputs_MouseDelta = m_InGameInputs.FindAction("MouseDelta", throwIfNotFound: true);
+        m_InGameInputs_RotateLeft = m_InGameInputs.FindAction("RotateLeft", throwIfNotFound: true);
+        m_InGameInputs_RotateRight = m_InGameInputs.FindAction("RotateRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,6 +297,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_InGameInputs_CameraMovement;
     private readonly InputAction m_InGameInputs_RotateCamera;
     private readonly InputAction m_InGameInputs_MouseDelta;
+    private readonly InputAction m_InGameInputs_RotateLeft;
+    private readonly InputAction m_InGameInputs_RotateRight;
     public struct InGameInputsActions
     {
         private @PlayerInput m_Wrapper;
@@ -267,6 +309,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @CameraMovement => m_Wrapper.m_InGameInputs_CameraMovement;
         public InputAction @RotateCamera => m_Wrapper.m_InGameInputs_RotateCamera;
         public InputAction @MouseDelta => m_Wrapper.m_InGameInputs_MouseDelta;
+        public InputAction @RotateLeft => m_Wrapper.m_InGameInputs_RotateLeft;
+        public InputAction @RotateRight => m_Wrapper.m_InGameInputs_RotateRight;
         public InputActionMap Get() { return m_Wrapper.m_InGameInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -294,6 +338,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MouseDelta.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMouseDelta;
                 @MouseDelta.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMouseDelta;
                 @MouseDelta.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMouseDelta;
+                @RotateLeft.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnRotateLeft;
+                @RotateLeft.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnRotateLeft;
+                @RotateLeft.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnRotateLeft;
+                @RotateRight.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnRotateRight;
+                @RotateRight.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnRotateRight;
+                @RotateRight.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnRotateRight;
             }
             m_Wrapper.m_InGameInputsActionsCallbackInterface = instance;
             if (instance != null)
@@ -316,6 +366,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MouseDelta.started += instance.OnMouseDelta;
                 @MouseDelta.performed += instance.OnMouseDelta;
                 @MouseDelta.canceled += instance.OnMouseDelta;
+                @RotateLeft.started += instance.OnRotateLeft;
+                @RotateLeft.performed += instance.OnRotateLeft;
+                @RotateLeft.canceled += instance.OnRotateLeft;
+                @RotateRight.started += instance.OnRotateRight;
+                @RotateRight.performed += instance.OnRotateRight;
+                @RotateRight.canceled += instance.OnRotateRight;
             }
         }
     }
@@ -328,5 +384,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnCameraMovement(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnMouseDelta(InputAction.CallbackContext context);
+        void OnRotateLeft(InputAction.CallbackContext context);
+        void OnRotateRight(InputAction.CallbackContext context);
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class ConstructableTerrain : MonoBehaviour, IConstructable
 {
-    public virtual void Construct(BuildingDatas buildingToBuild)
+    public virtual void Construct(BuildingDatas buildingToBuild, int rotation)
     {
-        GameObject spawnedBuilding = Instantiate(buildingToBuild.prefabs[0], transform.position, Quaternion.identity);
+        GameObject spawnedBuilding = Instantiate(buildingToBuild.prefabs[rotation], transform.position, Quaternion.identity);
         spawnedBuilding.GetComponent<Building>().Setup(this);
         HideThis();
     }

@@ -20,4 +20,8 @@ MonoBehaviour:
   entertainment: 0
   food: 0
   water: 0
-  prefab: {fileID: 24778164380135969, guid: 345c7d2e1a6d6a7478c385edd39aac96, type: 3}
+  prefabs:
+  - {fileID: 24778164380135969, guid: 345c7d2e1a6d6a7478c385edd39aac96, type: 3}
+  - {fileID: 2183449476106045578, guid: abef18fce1cbb824cb98b74ee6f67748, type: 3}
+  - {fileID: 1360913173821119831, guid: d1caa058825568f4d8720c139514dc36, type: 3}
+  - {fileID: 4718811408359199402, guid: abe06925fabe4864ab59011cf0d9a611, type: 3}

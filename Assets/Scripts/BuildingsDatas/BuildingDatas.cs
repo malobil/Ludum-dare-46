@@ -16,5 +16,5 @@ public class BuildingDatas : ScriptableObject
     public float food;
     public float water;
 
-    public GameObject prefab;
+    public List<GameObject> prefabs;
 }

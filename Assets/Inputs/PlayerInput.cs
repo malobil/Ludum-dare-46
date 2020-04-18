@@ -27,18 +27,18 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""MousePosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""d46ab858-ce17-4373-b2c5-f46bd37006ee"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""UnConstruct"",
                     ""type"": ""Button"",
                     ""id"": ""f3f7c362-cf57-4cd2-8c29-53cd4064b0e1"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""d46ab858-ce17-4373-b2c5-f46bd37006ee"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -96,8 +96,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         // InGameInputs
         m_InGameInputs = asset.FindActionMap("InGameInputs", throwIfNotFound: true);
         m_InGameInputs_Construct = m_InGameInputs.FindAction("Construct", throwIfNotFound: true);
-        m_InGameInputs_MousePosition = m_InGameInputs.FindAction("MousePosition", throwIfNotFound: true);
         m_InGameInputs_UnConstruct = m_InGameInputs.FindAction("UnConstruct", throwIfNotFound: true);
+        m_InGameInputs_MousePosition = m_InGameInputs.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -148,15 +148,15 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputActionMap m_InGameInputs;
     private IInGameInputsActions m_InGameInputsActionsCallbackInterface;
     private readonly InputAction m_InGameInputs_Construct;
-    private readonly InputAction m_InGameInputs_MousePosition;
     private readonly InputAction m_InGameInputs_UnConstruct;
+    private readonly InputAction m_InGameInputs_MousePosition;
     public struct InGameInputsActions
     {
         private @PlayerInput m_Wrapper;
         public InGameInputsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Construct => m_Wrapper.m_InGameInputs_Construct;
-        public InputAction @MousePosition => m_Wrapper.m_InGameInputs_MousePosition;
         public InputAction @UnConstruct => m_Wrapper.m_InGameInputs_UnConstruct;
+        public InputAction @MousePosition => m_Wrapper.m_InGameInputs_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_InGameInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -169,12 +169,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Construct.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnConstruct;
                 @Construct.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnConstruct;
                 @Construct.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnConstruct;
-                @MousePosition.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
-                @MousePosition.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
-                @MousePosition.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
                 @UnConstruct.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnUnConstruct;
                 @UnConstruct.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnUnConstruct;
                 @UnConstruct.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnUnConstruct;
+                @MousePosition.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_InGameInputsActionsCallbackInterface = instance;
             if (instance != null)
@@ -182,12 +182,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Construct.started += instance.OnConstruct;
                 @Construct.performed += instance.OnConstruct;
                 @Construct.canceled += instance.OnConstruct;
-                @MousePosition.started += instance.OnMousePosition;
-                @MousePosition.performed += instance.OnMousePosition;
-                @MousePosition.canceled += instance.OnMousePosition;
                 @UnConstruct.started += instance.OnUnConstruct;
                 @UnConstruct.performed += instance.OnUnConstruct;
                 @UnConstruct.canceled += instance.OnUnConstruct;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -195,7 +195,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public interface IInGameInputsActions
     {
         void OnConstruct(InputAction.CallbackContext context);
-        void OnMousePosition(InputAction.CallbackContext context);
         void OnUnConstruct(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

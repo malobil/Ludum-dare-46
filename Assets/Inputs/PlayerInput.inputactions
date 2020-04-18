@@ -14,18 +14,18 @@
                     "interactions": ""
                 },
                 {
-                    "name": "MousePosition",
-                    "type": "Value",
-                    "id": "d46ab858-ce17-4373-b2c5-f46bd37006ee",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "UnConstruct",
                     "type": "Button",
                     "id": "f3f7c362-cf57-4cd2-8c29-53cd4064b0e1",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "d46ab858-ce17-4373-b2c5-f46bd37006ee",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }

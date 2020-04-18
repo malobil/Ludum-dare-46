@@ -41,6 +41,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""7bdeda3f-b0e3-44ea-b767-7a8e75e27e22"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -87,6 +95,61 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""UnConstruct"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""id"": ""509b3065-11d0-4fc9-8d93-8fa33b0ade0a"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""fe469514-ce16-407e-850a-e38b970ddd52"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d47ab8d3-1b5f-4779-81a6-9d6d80e7f9a7"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a9c5066e-85b4-4914-9e22-c73502612a64"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3475aca7-9961-4e72-a7fa-fe6db04a3106"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -98,6 +161,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_InGameInputs_Construct = m_InGameInputs.FindAction("Construct", throwIfNotFound: true);
         m_InGameInputs_UnConstruct = m_InGameInputs.FindAction("UnConstruct", throwIfNotFound: true);
         m_InGameInputs_MousePosition = m_InGameInputs.FindAction("MousePosition", throwIfNotFound: true);
+        m_InGameInputs_CameraMovement = m_InGameInputs.FindAction("CameraMovement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -150,6 +214,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_InGameInputs_Construct;
     private readonly InputAction m_InGameInputs_UnConstruct;
     private readonly InputAction m_InGameInputs_MousePosition;
+    private readonly InputAction m_InGameInputs_CameraMovement;
     public struct InGameInputsActions
     {
         private @PlayerInput m_Wrapper;
@@ -157,6 +222,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Construct => m_Wrapper.m_InGameInputs_Construct;
         public InputAction @UnConstruct => m_Wrapper.m_InGameInputs_UnConstruct;
         public InputAction @MousePosition => m_Wrapper.m_InGameInputs_MousePosition;
+        public InputAction @CameraMovement => m_Wrapper.m_InGameInputs_CameraMovement;
         public InputActionMap Get() { return m_Wrapper.m_InGameInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -175,6 +241,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MousePosition.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMousePosition;
+                @CameraMovement.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnCameraMovement;
+                @CameraMovement.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnCameraMovement;
+                @CameraMovement.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnCameraMovement;
             }
             m_Wrapper.m_InGameInputsActionsCallbackInterface = instance;
             if (instance != null)
@@ -188,6 +257,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @CameraMovement.started += instance.OnCameraMovement;
+                @CameraMovement.performed += instance.OnCameraMovement;
+                @CameraMovement.canceled += instance.OnCameraMovement;
             }
         }
     }
@@ -197,5 +269,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnConstruct(InputAction.CallbackContext context);
         void OnUnConstruct(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnCameraMovement(InputAction.CallbackContext context);
     }
 }

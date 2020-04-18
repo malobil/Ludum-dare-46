@@ -47,5 +47,11 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     {
         collectButton.SetActive(false);
         StartCoroutine(cooldownMoney());
+        PlayerManager.Singleton.AddMoney(data.money);
+        PlayerManager.Singleton.AddFaith(data.faith);
+        PlayerManager.Singleton.AddEntertainment(data.entertainment);
+        PlayerManager.Singleton.AddFood(data.food);
+        PlayerManager.Singleton.AddPopulation(data.population);
+        PlayerManager.Singleton.AddWater(data.water);
     }
 }

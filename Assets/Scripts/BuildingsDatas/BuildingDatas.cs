@@ -5,7 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Building", menuName = "Create new building", order = 1)]
 public class BuildingDatas : ScriptableObject
 {
+    public string buildingName;
+    [Header("Build")]
     public float cost;
+    [Header("Gain")]
     public float faith;
     public float population;
     public float money;

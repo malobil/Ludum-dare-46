@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private BuildingDatas m_SelectedBuild;
     
-   public float actualMoney ;
+    public float actualMoney ;
 
     private PlayerInput inputs ;
     private Vector2 mousePosition;
@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     hitInfo.transform.gameObject.GetComponentInParent<IConstructable>().Construct(m_SelectedBuild);
                     actualMoney -= m_SelectedBuild.cost;
+                    UIManager.Singleton.UpdateMoneyText(actualMoney);
                 }
             }
             
@@ -55,7 +56,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UIManager.Singleton.UpdateMoneyText(actualMoney);
     }
 
     // Update is called once per frame

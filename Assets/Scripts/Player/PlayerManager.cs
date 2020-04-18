@@ -21,6 +21,12 @@ public class PlayerManager : MonoBehaviour
     public float actualEntertainment ;
     public float actualPeople ;
 
+    [Header("Balance")]
+    [SerializeField] private float faithLoosePerSecond ;
+    [SerializeField] private float foodLoosePerSecond ;
+    [SerializeField] private float waterLoosePerSecond ;
+    [SerializeField] private float entertainmentLoosePerSecond ;
+
 
     private PlayerInput inputs ;
     private Vector2 mousePosition;
@@ -54,6 +60,7 @@ public class PlayerManager : MonoBehaviour
         UIManager.Singleton.UpdateFoodText(actualFood);
         UIManager.Singleton.UpdatePopulationText(actualPeople);
         UIManager.Singleton.UpdateWaterText(actualWater);
+        StartCoroutine(LooseRessources());
     }
 
     // Update is called once per frame
@@ -240,38 +247,96 @@ public class PlayerManager : MonoBehaviour
 
     public void AddFaith(float addedValue)
     {
-        actualFaith += addedValue;
+        if(actualFaith + addedValue < 0)
+        {
+            actualFaith = 0;
+        }
+        else
+        {
+            actualFaith += addedValue;
+        }
+       
         UIManager.Singleton.UpdateFaithText(actualFaith);
     }
 
     public void AddMoney(float addedValue)
     {
-        actualMoney += addedValue;
+        if (actualMoney + addedValue < 0)
+        {
+            actualMoney = 0;
+        }
+        else
+        {
+            actualMoney += addedValue;
+        }
+
         UIManager.Singleton.UpdateMoneyText(actualMoney);
     }
 
     public void AddFood(float addedValue)
     {
-        actualFood += addedValue;
+        if (actualFood + addedValue < 0)
+        {
+            actualFood = 0;
+        }
+        else
+        {
+            actualFood += addedValue;
+        }
+
         UIManager.Singleton.UpdateFoodText(actualFood);
     }
 
     public void AddWater(float addedValue)
     {
-        actualWater += addedValue;
+        if (actualWater + addedValue < 0)
+        {
+            actualWater = 0;
+        }
+        else
+        {
+            actualWater += addedValue;
+        }
+
         UIManager.Singleton.UpdateWaterText(actualWater);
     }
 
     public void AddEntertainment(float addedValue)
     {
-        actualEntertainment += addedValue;
+        if (actualEntertainment + addedValue < 0)
+        {
+            actualEntertainment = 0;
+        }
+        else
+        {
+            actualEntertainment += addedValue;
+        }
+
         UIManager.Singleton.UpdateEntertainmentText(actualEntertainment);
     }
 
     public void AddPopulation(float addedValue)
     {
-        actualPeople += addedValue;
+        if (actualPeople + addedValue < 0)
+        {
+            actualPeople = 0;
+        }
+        else
+        {
+            actualPeople += addedValue;
+        }
+
         UIManager.Singleton.UpdatePopulationText(actualPeople);
+    }
+
+    IEnumerator LooseRessources()
+    {
+        yield return new WaitForSeconds(1f);
+        AddFaith(-faithLoosePerSecond);
+        AddFood(-foodLoosePerSecond);
+        AddWater(-waterLoosePerSecond);
+        AddEntertainment(-entertainmentLoosePerSecond);
+        StartCoroutine(LooseRessources());
     }
 
     void SetMaterialTransparent(Material mat)

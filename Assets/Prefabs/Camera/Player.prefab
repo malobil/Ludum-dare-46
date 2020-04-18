@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3915769754764973936}
   - component: {fileID: 3915769754764973937}
   m_Layer: 0
-  m_Name: CameraParent
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3915769754764973902}
-  m_LocalRotation: {x: -0, y: -0.31977174, z: -0, w: 0.9474947}
+  m_LocalRotation: {x: 0, y: -0.31976977, z: 0, w: 0.9474953}
   m_LocalPosition: {x: 2.32, y: 15.44, z: -11.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1979733d1e5ef4ba21929685084ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 17
-  sensitivity: 5
+  moveSpeed: 20
+  sensitivity: 10
+  zoomSensitivity: 10
   rbCamera: {fileID: 3915769754764973937}
   cam: {fileID: 9078392459584520970}
 --- !u!114 &3915769754764973936
@@ -62,8 +63,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a50c0e9f2cbf84e9558ce0cbd485f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SelectedBuild: {fileID: 11400000, guid: 002efb9f6b1138c409cf97087efb7b54, type: 2}
-  actualMoney: 5
+  m_PreviewColor: {r: 0.2971698, g: 0.63543653, b: 1, a: 0.6392157}
+  actualMoney: 1000
+  actualFaith: 0
+  actualFood: 0
+  actualWater: 0
+  actualEntertainment: 0
+  actualPeople: 0
+  faithLoosePerSecond: 0.7
+  foodLoosePerSecond: 0.5
+  waterLoosePerSecond: 10
+  entertainmentLoosePerSecond: 10
 --- !u!54 &3915769754764973937
 Rigidbody:
   m_ObjectHideFlags: 0

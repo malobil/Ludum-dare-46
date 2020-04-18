@@ -33,32 +33,32 @@ public class UIManager : MonoBehaviour
 
     public void UpdateFaithText(float newValue)
     {
-        m_FaithText.text = newValue.ToString();
+        m_FaithText.text = newValue.ToString("F0");
     }
 
     public void UpdateMoneyText(float newValue)
     {
-        m_MoneyText.text = newValue.ToString();
+        m_MoneyText.text = newValue.ToString("F0");
     }
 
     public void UpdateFoodText(float newValue)
     {
-        m_FoodText.text = newValue.ToString();
+        m_FoodText.text = newValue.ToString("F0");
     }
 
     public void UpdateWaterText(float newValue)
     {
-        m_WaterText.text = newValue.ToString();
+        m_WaterText.text = newValue.ToString("F0");
     }
 
     public void UpdateEntertainmentText(float newValue)
     {
-        m_EntertainmentText.text = newValue.ToString();
+        m_EntertainmentText.text = newValue.ToString("F0");
     }
 
     public void UpdatePopulationText(float newValue)
     {
-        m_PopText.text = newValue.ToString();
+        m_PopText.text = newValue.ToString("F0");
     }
 
     public bool CheckCursorOnUI()

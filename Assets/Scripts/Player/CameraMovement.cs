@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     public float sensitivity = 5f;
+    public float zoomSensitivity = 5f;
     public Rigidbody rbCamera;
     public GameObject cam;
 
@@ -37,18 +38,20 @@ public class CameraMovement : MonoBehaviour
     {
         CameraMove();
 
-        if(isRotating)
+        if (isRotating)
         {
             CameraRotation();
         }
         
     }
 
+
     void CameraMove()
     {
+        Vector3 zoomed = inputs.InGameInputs.MouseWheel.ReadValue<Vector2>().y * cam.transform.forward * Time.deltaTime * zoomSensitivity;
         movement = inputs.InGameInputs.CameraMovement.ReadValue<Vector2>();
-        Vector3 movementv3 = transform.right.normalized * movement.x + transform.forward.normalized * movement.y ;
-        rbCamera.velocity = movementv3 * moveSpeed;
+        Vector3 movementv3 = (transform.right.normalized * movement.x + transform.forward.normalized * movement.y) * moveSpeed ;
+        rbCamera.velocity = zoomed + movementv3 ;
     }
 
     public void CameraRotation()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_WaterText;
     [SerializeField] private TextMeshProUGUI m_EntertainmentText;
     [SerializeField] private TextMeshProUGUI m_PopText;
+
+    [Header("Event system")]
+    [SerializeField] private EventSystem m_EventSyst;
 
     public static UIManager Singleton { get; private set; }
 
@@ -25,18 +29,6 @@ public class UIManager : MonoBehaviour
         {
             Singleton = this;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateFaithText(float newValue)
@@ -68,4 +60,9 @@ public class UIManager : MonoBehaviour
     {
         m_PopText.text = newValue.ToString();
     }
-}
+
+    public bool CheckCursorOnUI()
+    {
+        return m_EventSyst.IsPointerOverGameObject() ;
+    }
+ }

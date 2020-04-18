@@ -117,7 +117,7 @@ public class PlayerManager : MonoBehaviour
 
     private void PreviewBuild()
     {
-        if (m_SelectedBuild != null)
+        if (m_SelectedBuild != null && !UIManager.Singleton.CheckCursorOnUI())
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
@@ -132,11 +132,15 @@ public class PlayerManager : MonoBehaviour
                 actualPreviewBuilding.SetActive(false);
             }
         }
+        else if(UIManager.Singleton.CheckCursorOnUI() && m_SelectedBuild != null)
+        {
+            actualPreviewBuilding.SetActive(false);
+        }
     }
 
     private void Build()
     {
-        if(m_SelectedBuild != null)
+        if(m_SelectedBuild != null && !UIManager.Singleton.CheckCursorOnUI())
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
@@ -158,29 +162,35 @@ public class PlayerManager : MonoBehaviour
 
     private void Collect()
     {
-        Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
-        RaycastHit hitInfo;
-
-        if (Physics.Raycast(mouseRay, out hitInfo))
+        if(!UIManager.Singleton.CheckCursorOnUI())
         {
-            if(hitInfo.transform.gameObject.CompareTag("Collect"))
-            {
-                hitInfo.transform.gameObject.GetComponentInParent<Building>().Collect();
-            }
+            Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
+            RaycastHit hitInfo;
 
+            if (Physics.Raycast(mouseRay, out hitInfo))
+            {
+                if (hitInfo.transform.gameObject.CompareTag("Collect"))
+                {
+                    hitInfo.transform.gameObject.GetComponentInParent<Building>().Collect();
+                }
+
+            }
         }
     }
 
     private void UnBuild()
     {
-        Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
-        RaycastHit hitInfo;
-
-        if (Physics.Raycast(mouseRay, out hitInfo))
+        if(!UIManager.Singleton.CheckCursorOnUI())
         {
-            if (hitInfo.transform.gameObject.GetComponentInParent<IUnconstructable>() != null)
+            Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(mouseRay, out hitInfo))
             {
-                hitInfo.transform.gameObject.GetComponentInParent<IUnconstructable>().UnContruct();
+                if (hitInfo.transform.gameObject.GetComponentInParent<IUnconstructable>() != null)
+                {
+                    hitInfo.transform.gameObject.GetComponentInParent<IUnconstructable>().UnContruct();
+                }
             }
         }
     }

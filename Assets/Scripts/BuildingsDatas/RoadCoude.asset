@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
+  m_Name: RoadCoude
+  m_EditorClassIdentifier: 
+  buildingName: Road Coude
+  cost: 10
+  faith: 0
+  population: 0
+  money: 0
+  entertainment: 0
+  food: 0
+  water: 0
+  prefabs:
+  - {fileID: 3842309925714178150, guid: f08f0188af02df444b07fc9dd2f17759, type: 3}
+  - {fileID: 7472838983550458362, guid: c322308b1ad785343affe6748e5df2b0, type: 3}
+  - {fileID: 5779931613337783472, guid: 45d9986b372869240920ad3610b3287b, type: 3}
+  - {fileID: 4969346440575064286, guid: 3655a7a2422f5bf46910a598d008aac8, type: 3}

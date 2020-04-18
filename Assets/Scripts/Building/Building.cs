@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Building : MonoBehaviour, IUnconstructable
 {
     private ConstructableTerrain previousTile;
-
+    public bool canBeCollected = true;
     public BuildingDatas data;
     public GameObject collectButton;
 
@@ -23,13 +23,11 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(cooldownMoney());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(canBeCollected)
+        {
+            StartCoroutine(cooldownMoney());
+        }
+       
     }
 
     IEnumerator cooldownMoney()
@@ -43,7 +41,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         collectButton.SetActive(true);
     }
 
-    public void Collect()
+    public virtual void Collect()
     {
         collectButton.SetActive(false);
         StartCoroutine(cooldownMoney());

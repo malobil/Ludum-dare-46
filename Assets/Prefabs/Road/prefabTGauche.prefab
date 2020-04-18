@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3715641977134260780}
   - component: {fileID: 8351062192345688923}
   - component: {fileID: 2366755653336061858}
+  - component: {fileID: -3403943207730434736}
   - component: {fileID: 3969271101948384919}
   m_Layer: 0
   m_Name: prefabTGauche
@@ -80,6 +81,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-3403943207730434736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562330839169828565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51c13df07e80ad40af96f2b360690e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeCollected: 0
+  data: {fileID: 0}
+  collectButton: {fileID: 0}
 --- !u!65 &3969271101948384919
 BoxCollider:
   m_ObjectHideFlags: 0

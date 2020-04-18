@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class House : Building
+public class Road : Building
 {
-
+   
 }

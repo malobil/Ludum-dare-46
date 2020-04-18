@@ -6,9 +6,11 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Singleton { get; private set; }
 
-    [SerializeField] private BuildingDatas m_SelectedBuild;
+   
+    [SerializeField] private Color m_PreviewColor;
     private GameObject actualPreviewBuilding;
     private List<GameObject> previewBuildingList = new List<GameObject>();
+    private BuildingDatas m_SelectedBuild;
 
     private int selectedBuildingRotation = 0;
     
@@ -52,7 +54,6 @@ public class PlayerManager : MonoBehaviour
         UIManager.Singleton.UpdateFoodText(actualFood);
         UIManager.Singleton.UpdatePopulationText(actualPeople);
         UIManager.Singleton.UpdateWaterText(actualWater);
-        SetNewBuilding(m_SelectedBuild); //DEBUG TO DELETE
     }
 
     // Update is called once per frame
@@ -70,9 +71,25 @@ public class PlayerManager : MonoBehaviour
 
     private void SetupPreviewObjects()
     {
+        previewBuildingList.Clear();
+        selectedBuildingRotation = 0;
+
         for(int i = 0; i < m_SelectedBuild.prefabs.Count; i++)
         {
             GameObject spawnedPrefab = Instantiate(m_SelectedBuild.prefabs[i]);
+
+            if (spawnedPrefab.GetComponent<Collider>())
+            {
+                spawnedPrefab.GetComponent<Collider>().enabled = false;
+            }
+
+            if (spawnedPrefab.GetComponent<Renderer>())
+            {
+                SetMaterialTransparent(spawnedPrefab.GetComponent<Renderer>().material);
+                spawnedPrefab.GetComponent<Renderer>().material.color = m_PreviewColor;
+                spawnedPrefab.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                spawnedPrefab.GetComponent<Renderer>().receiveShadows = false;
+            }
 
             foreach (Transform childs in spawnedPrefab.transform)
             {
@@ -80,8 +97,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     Renderer childRendComp = childs.GetComponent<Renderer>();
                     SetMaterialTransparent(childRendComp.material);
-                    childRendComp.material.color
-                        = new Color(childRendComp.material.color.r, childRendComp.material.color.g, childRendComp.material.color.b, 0.5f);
+                    childRendComp.material.color = m_PreviewColor;
                     childRendComp.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                     childRendComp.receiveShadows = false;
                 }

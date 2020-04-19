@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
   m_Name: RoadT
   m_EditorClassIdentifier: 
-  buildingName: Road Coude
+  buildingName: Road T
   cost: 5
   productionTime: 10
   faith: 0

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
+  m_Name: Tavern
+  m_EditorClassIdentifier: 
+  buildingName: Tavern
+  cost: 0
+  productionTime: 0
+  faith: 0
+  population: 0
+  money: 0
+  entertainment: 0
+  food: 0
+  water: 0
+  prefabs:
+  - {fileID: 5593955234971137780, guid: a8afdf57e33207d4bb74dda9e562461a, type: 3}
+  - {fileID: 9184700344504818663, guid: 7639f17a7d2823a48aef47d5e07ed685, type: 3}
+  - {fileID: 127892936469692305, guid: b1aa194a20c37d94a82f190aa8513457, type: 3}
+  - {fileID: 3711972304385928920, guid: c66a3f1673bd9834ba2b10091b6e0a72, type: 3}

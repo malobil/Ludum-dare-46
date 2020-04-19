@@ -50,6 +50,7 @@ MonoBehaviour:
   canBeDestroy: 1
   canBeCollected: 1
   data: {fileID: 11400000, guid: 002efb9f6b1138c409cf97087efb7b54, type: 2}
+  buildingDirection: 1
   collectButton: {fileID: 4918872563869294723}
 --- !u!1 &681985281386990060
 GameObject:

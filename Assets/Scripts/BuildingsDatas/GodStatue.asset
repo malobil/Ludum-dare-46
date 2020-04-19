@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: God Statue
   cost: 0
-  productionTime: 0
+  productionTime: 10
   faith: 0
   population: 0
   money: 0

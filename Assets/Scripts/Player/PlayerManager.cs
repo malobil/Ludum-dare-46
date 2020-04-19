@@ -6,10 +6,13 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Singleton { get; private set; }
 
-   
+    [Header("Preview")]
     [SerializeField] private Color m_PreviewColor;
+    [SerializeField] private Color m_PreviewColorError;
     private GameObject actualPreviewBuilding;
     private List<GameObject> previewBuildingList = new List<GameObject>();
+    private List<Material> previewBuildingMaterials = new List<Material>();
+
     private BuildingDatas m_SelectedBuild;
 
     private int selectedBuildingRotation = 0;
@@ -83,6 +86,7 @@ public class PlayerManager : MonoBehaviour
             Destroy(previews);
         }
 
+        previewBuildingMaterials.Clear();
         previewBuildingList.Clear();
         selectedBuildingRotation = 0;
 
@@ -102,10 +106,11 @@ public class PlayerManager : MonoBehaviour
 
             if (spawnedPrefab.GetComponent<Renderer>())
             {
-                SetMaterialTransparent(spawnedPrefab.GetComponent<Renderer>().material);
-                spawnedPrefab.GetComponent<Renderer>().material.color = m_PreviewColor;
-                spawnedPrefab.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-                spawnedPrefab.GetComponent<Renderer>().receiveShadows = false;
+                Renderer spawnedPrefabRend = spawnedPrefab.GetComponent<Renderer>();
+                SetMaterialTransparent(spawnedPrefabRend.material);
+                spawnedPrefabRend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                spawnedPrefabRend.receiveShadows = false;
+                previewBuildingMaterials.Add(spawnedPrefabRend.material);
             }
 
             foreach (Transform childs in spawnedPrefab.transform)
@@ -114,9 +119,9 @@ public class PlayerManager : MonoBehaviour
                 {
                     Renderer childRendComp = childs.GetComponent<Renderer>();
                     SetMaterialTransparent(childRendComp.material);
-                    childRendComp.material.color = m_PreviewColor;
                     childRendComp.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                     childRendComp.receiveShadows = false;
+                    previewBuildingMaterials.Add(childRendComp.material);
                 }
 
                 if (childs.GetComponent<Collider>())
@@ -139,10 +144,26 @@ public class PlayerManager : MonoBehaviour
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
 
-            if (Physics.Raycast(mouseRay, out hitInfo) && hitInfo.transform.gameObject.GetComponentInParent<IConstructable>() != null)
+            if (Physics.Raycast(mouseRay, out hitInfo))
             {
-                    actualPreviewBuilding.transform.position = hitInfo.transform.position;
-                    actualPreviewBuilding.SetActive(true);
+                if(hitInfo.transform.gameObject.GetComponentInParent<ConstructableTerrain>() != null)
+                {
+                    if (!hitInfo.transform.gameObject.GetComponentInParent<ConstructableTerrain>().CheckNearTile(actualPreviewBuilding.GetComponent<Building>().buildingDirection, m_SelectedBuild.tileSize))
+                    {
+                        ChangeAllPreviewMatColor(m_PreviewColorError);
+                    }
+                    else
+                    {
+                        ChangeAllPreviewMatColor(m_PreviewColor);
+                    }
+                }
+                else
+                {
+                    ChangeAllPreviewMatColor(m_PreviewColorError);
+                }
+
+                actualPreviewBuilding.transform.position = hitInfo.transform.position;
+                actualPreviewBuilding.SetActive(true);
             }
             else
             {
@@ -190,7 +211,6 @@ public class PlayerManager : MonoBehaviour
                 {
                     hitInfo.transform.gameObject.GetComponentInParent<Building>().Collect();
                 }
-
             }
         }
     }
@@ -347,6 +367,14 @@ public class PlayerManager : MonoBehaviour
         AddWater(-waterLoosePerSecond);
         AddEntertainment(-entertainmentLoosePerSecond);
         StartCoroutine(LooseRessources());
+    }
+
+    void ChangeAllPreviewMatColor(Color newColor)
+    {
+        foreach(Material mats in previewBuildingMaterials)
+        {
+            mats.color = newColor;
+        }
     }
 
     void SetMaterialTransparent(Material mat)

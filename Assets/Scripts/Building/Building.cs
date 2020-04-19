@@ -8,6 +8,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     public bool canBeDestroy = true;
     public bool canBeCollected = true;
     public BuildingDatas data;
+    public Direction buildingDirection;
     public GameObject collectButton;
 
     private List<Building> connectedRoad = new List<Building>() ;

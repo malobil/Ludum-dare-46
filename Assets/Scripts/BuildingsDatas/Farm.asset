@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: 
   cost: 10
-  productionTime: 0
+  productionTime: 10
   faith: 0
   population: 0
   money: 0

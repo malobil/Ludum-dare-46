@@ -17,5 +17,7 @@ public class BuildingDatas : ScriptableObject
     public float food;
     public float water;
 
+    [Header("Prefab")]
     public List<GameObject> prefabs;
+    public int tileSize = 1;
 }

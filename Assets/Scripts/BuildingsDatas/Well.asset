@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
+  m_Name: Well
+  m_EditorClassIdentifier: 
+  buildingName: 
+  cost: 10
+  faith: 0
+  population: 0
+  money: 0
+  entertainment: 0
+  food: 0
+  water: 100
+  prefabs:
+  - {fileID: 7372831370410144976, guid: 057fc72a9af399946860ef56f13b13ed, type: 3}
+  - {fileID: 8538762982757807113, guid: e5a026bc8206e064dba0bee28362a0e4, type: 3}
+  - {fileID: 2047847391473988845, guid: 7e8070e98cd79214c9a563a68fd248e0, type: 3}
+  - {fileID: 4362535979512469621, guid: 2537702a5dfcdd143b828708ac2bb962, type: 3}

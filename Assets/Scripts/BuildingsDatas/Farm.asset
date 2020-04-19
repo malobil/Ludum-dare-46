@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
+  m_Name: Farm
+  m_EditorClassIdentifier: 
+  buildingName: 
+  cost: 10
+  faith: 0
+  population: 0
+  money: 0
+  entertainment: 0
+  food: 100
+  water: 0
+  prefabs:
+  - {fileID: 2072333930017443919, guid: 4cb63e68aa0ab4443a0eb3d6ad96af4e, type: 3}
+  - {fileID: 4541609929044772927, guid: 40e36edd3eb6f514aa4adadf9f94d427, type: 3}

@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Singleton)
+        if(Singleton != null)
         {
             Destroy(this);
         }

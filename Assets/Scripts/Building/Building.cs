@@ -27,16 +27,21 @@ public abstract class Building : MonoBehaviour, IUnconstructable
             {
                 connectedRoad[i].RemoveRoad(this);
             }
-           
+
+            if(isConectedToTheAutel)
+            {
+                PlayerManager.Singleton.AddPopulation(-data.population);
+            }
+            
             DestroyMe();
         }
     }
 
     public void Setup(ConstructableTerrain constructTile, BuildingDatas newDatas)
     {
-        BuildingManager.Singleton.AddBuildingToList(this);
         previousTile = constructTile;
         data = newDatas;
+        BuildingManager.Singleton.AddBuildingToList(this);
     }
 
     public virtual void OnEnter()
@@ -79,24 +84,31 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         PlayerManager.Singleton.AddFaith(data.faith);
         PlayerManager.Singleton.AddEntertainment(data.entertainment);
         PlayerManager.Singleton.AddFood(data.food);
-        PlayerManager.Singleton.AddPopulation(data.population);
         PlayerManager.Singleton.AddWater(data.water);
         StartProduction();
     }
 
     public void ConnectToAutel()
     {
+        if(!isConectedToTheAutel)
+        {
+            Debug.Log(data);
+            PlayerManager.Singleton.AddPopulation(data.population);
+        }
+
         isConectedToTheAutel = true;
         BuildingManager.Singleton.CheckedBuilding(this);
         StartProduction();
-
-        foreach(Building builds in connectedRoad)
+     
+        foreach (Building builds in connectedRoad)
         {
             if(!BuildingManager.Singleton.CheckIfBuildingIsCheck(builds))
             {
                 builds.ConnectToAutel();
             }
         }
+
+       
     }
 
     void StartProduction()
@@ -119,8 +131,14 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public void UnConnectToAutel()
     {
+        if(isConectedToTheAutel)
+        {
+            PlayerManager.Singleton.AddPopulation(-data.population);
+        }
+
         isConectedToTheAutel = false;
         StopProduction();
+       
     }
 
     public void ConnectRoad(Building road)

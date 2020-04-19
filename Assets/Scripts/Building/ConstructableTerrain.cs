@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class ConstructableTerrain : MonoBehaviour, IConstructable
 {
-    private bool IsPreviewed = false;
-
     public virtual void Construct(BuildingDatas buildingToBuild, int rotation)
     {
         GameObject spawnedBuilding = Instantiate(buildingToBuild.prefabs[rotation], transform.position, buildingToBuild.prefabs[rotation].transform.rotation);
@@ -16,11 +14,6 @@ public abstract class ConstructableTerrain : MonoBehaviour, IConstructable
     public void HideThis()
     {
         gameObject.SetActive(false);
-    }
-
-    public void PreviewConstruct(BuildingDatas buildingToBuild, int rotation)
-    {
-       
     }
 
     public void ShowThis()

@@ -73,13 +73,13 @@ public class UIManager : MonoBehaviour
 
     public void SetupPreviewDataInfos(BuildingDatas data)
     {
-        m_PreviewCostText.text = data.cost + "money";
+        m_PreviewCostText.text = data.cost.ToString("") ;
         m_PreviewNameText.text = data.name;
-        m_PreviewMoneyText.text = data.money + "money/sec";
-        m_PreviewFoodText.text = data.food + "food/sec";
-        m_PreviewWaterText.text = data.water + "water/sec";
-        m_PreviewEntertainmentText.text = data.entertainment + "entertainment/sec";
-        m_PreviewPopulationText.text = data.population + "population";
+        m_PreviewMoneyText.text = data.money + "/sec";
+        m_PreviewFoodText.text = data.food + "/sec";
+        m_PreviewWaterText.text = data.water + "/sec";
+        m_PreviewEntertainmentText.text = data.entertainment + "/sec";
+        m_PreviewPopulationText.text = data.population.ToString("");
     }
 
     public void ShowBuildingPreviewUI()

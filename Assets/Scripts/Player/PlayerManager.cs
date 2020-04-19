@@ -9,9 +9,11 @@ public class PlayerManager : MonoBehaviour
     [Header("Preview")]
     [SerializeField] private Color m_PreviewColor;
     [SerializeField] private Color m_PreviewColorError;
+    [SerializeField] private LayerMask m_PreviewLayers;
     private GameObject actualPreviewBuilding;
     private List<GameObject> previewBuildingList = new List<GameObject>();
     private List<Material> previewBuildingMaterials = new List<Material>();
+    private ConstructableTerrain targetedConstructTerrain;
 
     private BuildingDatas m_SelectedBuild;
 
@@ -144,11 +146,13 @@ public class PlayerManager : MonoBehaviour
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
 
-            if (Physics.Raycast(mouseRay, out hitInfo))
+            if (Physics.Raycast(mouseRay, out hitInfo,999f, m_PreviewLayers))
             {
-                if(hitInfo.transform.gameObject.GetComponentInParent<ConstructableTerrain>() != null)
+                targetedConstructTerrain = hitInfo.transform.gameObject.GetComponentInParent<ConstructableTerrain>();
+
+                if (targetedConstructTerrain != null)
                 {
-                    if (!hitInfo.transform.gameObject.GetComponentInParent<ConstructableTerrain>().CheckNearTile(actualPreviewBuilding.GetComponent<Building>().buildingDirection, m_SelectedBuild.tileSize))
+                    if (!targetedConstructTerrain.CheckNearTile(actualPreviewBuilding.GetComponent<Building>().buildingDirection,m_SelectedBuild.tileSize))
                     {
                         ChangeAllPreviewMatColor(m_PreviewColorError);
                     }
@@ -167,6 +171,7 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
+                targetedConstructTerrain = null;
                 actualPreviewBuilding.SetActive(false);
             }
         }
@@ -180,21 +185,15 @@ public class PlayerManager : MonoBehaviour
     {
         if(m_SelectedBuild != null && !UIManager.Singleton.CheckCursorOnUI())
         {
-            Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
-            RaycastHit hitInfo;
-
-            if (Physics.Raycast(mouseRay, out hitInfo))
-            {
                 if (actualMoney >= m_SelectedBuild.cost)
                 {
-                    if (hitInfo.transform.gameObject.GetComponentInParent<IConstructable>() != null)
+                    if (targetedConstructTerrain != null)
                     {
-                        hitInfo.transform.gameObject.GetComponentInParent<IConstructable>().Construct(m_SelectedBuild, selectedBuildingRotation);
-                        AddMoney(-m_SelectedBuild.cost);
-                        UIManager.Singleton.UpdateMoneyText(actualMoney);
+                       targetedConstructTerrain.Construct(m_SelectedBuild, selectedBuildingRotation);
+                       AddMoney(-m_SelectedBuild.cost);
+                       UIManager.Singleton.UpdateMoneyText(actualMoney);
                     }
                 }
-            }
         }
     }
 

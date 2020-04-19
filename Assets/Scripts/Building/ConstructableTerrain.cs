@@ -9,12 +9,28 @@ public abstract class ConstructableTerrain : MonoBehaviour, IConstructable
     public ConstructableTerrain connectedTilesLeft;
     public ConstructableTerrain connectedTilesRight;
 
+    private List<ConstructableTerrain> constructs = new List<ConstructableTerrain>();
+
+    private void Start()
+    {
+        constructs.Add(this);    
+    }
+
     public virtual void Construct(BuildingDatas buildingToBuild, int rotation)
     {
+      
         GameObject spawnedBuilding = Instantiate(buildingToBuild.prefabs[rotation], new Vector3(0f,9999f,0f), buildingToBuild.prefabs[rotation].transform.rotation);
-        spawnedBuilding.GetComponent<Building>().Setup(this,buildingToBuild);
-        spawnedBuilding.transform.position = transform.position;
+        if (buildingToBuild.tileSize > 1)
+        {
+            HideNearTile(spawnedBuilding.GetComponent<Building>().buildingDirection);
+        }
         HideThis();
+        spawnedBuilding.GetComponent<Building>().Setup(constructs, buildingToBuild);
+        spawnedBuilding.transform.position = transform.position;
+        
+        
+
+        
     }
 
     public void HideThis()
@@ -65,10 +81,39 @@ public abstract class ConstructableTerrain : MonoBehaviour, IConstructable
         }
     }
 
-    public bool CheckNearTile(Direction dir, int tilesToCheck)
+    void HideNearTile(Direction dir)
     {
-        for(int i = 1; i < tilesToCheck; i++)
+        switch (dir)
         {
+            case Direction.Up:
+                connectedTilesUp.HideThis();
+                constructs.Add(connectedTilesUp);
+                break;
+
+            case Direction.Down:
+                connectedTilesDown.HideThis();
+                constructs.Add(connectedTilesDown);
+                break;
+
+            case Direction.Left:
+                connectedTilesLeft.HideThis();
+                constructs.Add(connectedTilesLeft);
+                break;
+
+            case Direction.Right:
+                connectedTilesRight.HideThis();
+                constructs.Add(connectedTilesRight);
+                break;
+        }
+
+    }
+
+    public bool CheckNearTile(Direction dir, int tiles)
+    {
+        if(tiles <= 1)
+        {
+            return true;
+        }
             switch (dir)
             {
                 case Direction.Up:
@@ -99,7 +144,6 @@ public abstract class ConstructableTerrain : MonoBehaviour, IConstructable
                     }
                     break;
             }
-        }
 
         return true;
     }

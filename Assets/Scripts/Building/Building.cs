@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Building : MonoBehaviour, IUnconstructable
 {
-    private ConstructableTerrain previousTile;
+    private List<ConstructableTerrain> previousTiles = new List<ConstructableTerrain>();
     public bool canBeDestroy = true;
     public bool canBeCollected = true;
     public BuildingDatas data;
@@ -20,7 +20,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     {
         if(canBeDestroy)
         {
-            previousTile.ShowThis();
+            ShowPreviousTiles();
             PlayerManager.Singleton.AddMoney(data.cost / 2f);
             BuildingManager.Singleton.RemoveBuildingToList(this);
 
@@ -38,11 +38,24 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         }
     }
 
-    public void Setup(ConstructableTerrain constructTile, BuildingDatas newDatas)
+    public void Setup(List<ConstructableTerrain> constructTile, BuildingDatas newDatas)
     {
-        previousTile = constructTile;
+        foreach(ConstructableTerrain tiles in constructTile)
+        {
+            Debug.Log(tiles.gameObject);
+            previousTiles.Add(tiles);
+        }
+
         data = newDatas;
         BuildingManager.Singleton.AddBuildingToList(this);
+    }
+
+    void ShowPreviousTiles()
+    {
+        foreach (ConstructableTerrain tiles in previousTiles)
+        {
+            tiles.ShowThis();
+        }
     }
 
     public virtual void OnEnter()

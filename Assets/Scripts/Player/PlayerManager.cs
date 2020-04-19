@@ -95,6 +95,11 @@ public class PlayerManager : MonoBehaviour
                 spawnedPrefab.GetComponent<Collider>().enabled = false;
             }
 
+            if(spawnedPrefab.GetComponent<Building>())
+            {
+                spawnedPrefab.GetComponent<Building>().enabled = false;
+            }
+
             if (spawnedPrefab.GetComponent<Renderer>())
             {
                 SetMaterialTransparent(spawnedPrefab.GetComponent<Renderer>().material);

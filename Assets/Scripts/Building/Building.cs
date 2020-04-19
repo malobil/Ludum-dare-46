@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Building : MonoBehaviour, IUnconstructable
 {
     private ConstructableTerrain previousTile;
+    public bool canBeDestroy = true;
     public bool canBeCollected = true;
     public BuildingDatas data;
     public GameObject collectButton;
@@ -14,13 +15,24 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public virtual void UnContruct()
     {
-        previousTile.ShowThis();
-        PlayerManager.Singleton.AddMoney(data.cost / 2f);
-        DestroyMe();
+        if(canBeDestroy)
+        {
+            previousTile.ShowThis();
+            PlayerManager.Singleton.AddMoney(data.cost / 2f);
+            BuildingManager.Singleton.RemoveBuildingToList(this);
+
+            for(int i = 0; i < connectedRoad.Count; i++)
+            {
+                connectedRoad[i].RemoveRoad(this);
+            }
+           
+            DestroyMe();
+        }
     }
 
     public void Setup(ConstructableTerrain constructTile, BuildingDatas newDatas)
     {
+        BuildingManager.Singleton.AddBuildingToList(this);
         previousTile = constructTile;
         data = newDatas;
     }
@@ -35,11 +47,6 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public virtual void DestroyMe()
     {
-        foreach (Road nearedRoad in connectedRoad)
-        {
-            nearedRoad.RemoveRoad(this);
-        }
-
         Destroy(gameObject);
     }
 
@@ -77,27 +84,30 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         PlayerManager.Singleton.AddWater(data.water);
     }
 
-    //WIP
-    public void CheckIfConnected()
+    public void ConnectToAutel()
     {
-        foreach(Building roads in connectedRoad)
+        isConectedToTheAutel = true;
+        BuildingManager.Singleton.CheckedBuilding(this);
+
+        foreach(Building builds in connectedRoad)
         {
-            if(roads.isConectedToTheAutel)
+            if(!BuildingManager.Singleton.CheckIfBuildingIsCheck(builds))
             {
-                isConectedToTheAutel = true;
+                builds.ConnectToAutel();
             }
         }
     }
 
-    void CheckAllConnection()
+    public void UnConnectToAutel()
     {
-
+        isConectedToTheAutel = false;
+        Debug.Log("UNCONNECT");
     }
-    //WIP
 
     public void ConnectRoad(Building road)
     {
         connectedRoad.Add(road);
+        BuildingManager.Singleton.CheckConnectedPath();
     }
 
     public void RemoveRoad(Building road)
@@ -105,6 +115,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         if (connectedRoad.Contains(road))
         {
             connectedRoad.Remove(road);
+            BuildingManager.Singleton.CheckConnectedPath();
         }
     }
 

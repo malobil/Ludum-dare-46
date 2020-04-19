@@ -1,22 +1,28 @@
 fileFormatVersion: 2
-guid: 448ae44a492ca874fa6ba3ac172868fc
+guid: faade4bc01d3fa148946df0f194a3100
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4773600122041589604
+      213: -6481804880238819968
     second: SpriteHouse
   - first:
-      213: -4789670105439411607
-    second: SpriteHor
+      213: 8209435152795757952
+    second: SpriteRoad
   - first:
-      213: 7061801754131594114
+      213: 7471782466467294403
     second: SpriteCoude
   - first:
-      213: -7377819553374844296
-    second: SpritesT
+      213: -5502639703764397390
+    second: SpriteCross
   - first:
-      213: -638443171332479689
-    second: SpritesCross
+      213: 2523606071912369997
+    second: SpriteT
+  - first:
+      213: -3049962501696432654
+    second: SpriteWell
+  - first:
+      213: -5188134733675231304
+    second: SpriteFarm
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,8 +111,8 @@ TextureImporter:
       name: SpriteHouse
       rect:
         serializedVersion: 2
-        x: 131
-        y: 586
+        x: 28
+        y: 714
         width: 256
         height: 256
       alignment: 0
@@ -116,18 +122,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46fdc06f40c3f3240800000000000000
-      internalID: 4773600122041589604
+      spriteID: 085c8f1bdc00c06a0800000000000000
+      internalID: -6481804880238819968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteHor
+      name: SpriteRoad
       rect:
         serializedVersion: 2
-        x: 526
-        y: 586
+        x: 534
+        y: 714
         width: 256
         height: 256
       alignment: 0
@@ -137,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 962e9f57a6ca78db0800000000000000
-      internalID: -4789670105439411607
+      spriteID: 08deef8a6c5cde170800000000000000
+      internalID: 8209435152795757952
       vertices: []
       indices: 
       edges: []
@@ -147,8 +153,8 @@ TextureImporter:
       name: SpriteCoude
       rect:
         serializedVersion: 2
-        x: 922
-        y: 586
+        x: 1039
+        y: 714
         width: 256
         height: 256
       alignment: 0
@@ -158,18 +164,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28b7e35c74f800260800000000000000
-      internalID: 7061801754131594114
+      spriteID: 3cc66c8e09a11b760800000000000000
+      internalID: 7471782466467294403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesT
+      name: SpriteCross
       rect:
         serializedVersion: 2
-        x: 328
-        y: 175
+        x: 27
+        y: 372
         width: 256
         height: 256
       alignment: 0
@@ -179,18 +185,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87a4920a438bc9990800000000000000
-      internalID: -7377819553374844296
+      spriteID: 2b2992af752b2a3b0800000000000000
+      internalID: -5502639703764397390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesCross
+      name: SpriteT
       rect:
         serializedVersion: 2
-        x: 727
-        y: 175
+        x: 535
+        y: 372
         width: 256
         height: 256
       alignment: 0
@@ -200,8 +206,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 735247b715bc327f0800000000000000
-      internalID: -638443171332479689
+      spriteID: d4f0b5d0a56a50320800000000000000
+      internalID: 2523606071912369997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteWell
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 372
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f55f1c934b5ca5d0800000000000000
+      internalID: -3049962501696432654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteFarm
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 30
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b70c6892fa0008b0800000000000000
+      internalID: -5188134733675231304
       vertices: []
       indices: 
       edges: []
@@ -209,7 +257,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 74089b0d56df83c478284fddd9e125cf
     internalID: 0
     vertices: []
     indices: 

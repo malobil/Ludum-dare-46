@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeDestroy: 0
   canBeCollected: 0
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 9670c0c69588e6c4f87c470eedebe85e, type: 2}
   collectButton: {fileID: 0}
 --- !u!1 &1929260837222947997
 GameObject:

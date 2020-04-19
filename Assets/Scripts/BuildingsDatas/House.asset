@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 20
   productionTime: 10
   faith: 0
-  population: 0
+  population: 2
   money: 1000
   entertainment: 0
   food: 0

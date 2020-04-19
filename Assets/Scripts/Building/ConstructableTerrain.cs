@@ -6,8 +6,9 @@ public abstract class ConstructableTerrain : MonoBehaviour, IConstructable
 {
     public virtual void Construct(BuildingDatas buildingToBuild, int rotation)
     {
-        GameObject spawnedBuilding = Instantiate(buildingToBuild.prefabs[rotation], transform.position, buildingToBuild.prefabs[rotation].transform.rotation);
+        GameObject spawnedBuilding = Instantiate(buildingToBuild.prefabs[rotation], new Vector3(0f,9999f,0f), buildingToBuild.prefabs[rotation].transform.rotation);
         spawnedBuilding.GetComponent<Building>().Setup(this,buildingToBuild);
+        spawnedBuilding.transform.position = transform.position;
         HideThis();
     }
 

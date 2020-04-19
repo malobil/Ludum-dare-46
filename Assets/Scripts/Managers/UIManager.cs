@@ -14,6 +14,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_EntertainmentText;
     [SerializeField] private TextMeshProUGUI m_PopText;
 
+    [Header("BuildingPreview")]
+    [SerializeField] private GameObject m_PreviewUI;
+    [SerializeField] private TextMeshProUGUI m_PreviewNameText;
+    [SerializeField] private TextMeshProUGUI m_PreviewCostText;
+    [SerializeField] private TextMeshProUGUI m_PreviewMoneyText;
+    [SerializeField] private TextMeshProUGUI m_PreviewFoodText;
+    [SerializeField] private TextMeshProUGUI m_PreviewWaterText;
+    [SerializeField] private TextMeshProUGUI m_PreviewEntertainmentText;
+    [SerializeField] private TextMeshProUGUI m_PreviewPopulationText;
+
     [Header("Event system")]
     [SerializeField] private EventSystem m_EventSyst;
 
@@ -59,6 +69,27 @@ public class UIManager : MonoBehaviour
     public void UpdatePopulationText(float newValue)
     {
         m_PopText.text = newValue.ToString("F0");
+    }
+
+    public void SetupPreviewDataInfos(BuildingDatas data)
+    {
+        m_PreviewCostText.text = data.cost + "money";
+        m_PreviewNameText.text = data.name;
+        m_PreviewMoneyText.text = data.money + "money/sec";
+        m_PreviewFoodText.text = data.food + "food/sec";
+        m_PreviewWaterText.text = data.water + "water/sec";
+        m_PreviewEntertainmentText.text = data.entertainment + "entertainment/sec";
+        m_PreviewPopulationText.text = data.population + "population";
+    }
+
+    public void ShowBuildingPreviewUI()
+    {
+        m_PreviewUI.SetActive(true);
+    }
+
+    public void HideBuildingPreviewUI()
+    {
+        m_PreviewUI.SetActive(false);
     }
 
     public bool CheckCursorOnUI()

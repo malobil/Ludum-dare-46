@@ -120,11 +120,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2573264484681615449}
         m_MethodName: SelectBuilding
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 002efb9f6b1138c409cf97087efb7b54,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: BuildingDatas, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -142,3 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28e36abc2a7d914891e677cab140d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingSelect: {fileID: 0}

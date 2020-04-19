@@ -74,6 +74,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     public void Gain()
     {
         collectButton.SetActive(true);
+        isProducting = false;
     }
 
     public virtual void Collect()
@@ -92,7 +93,6 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     {
         if(!isConectedToTheAutel)
         {
-            Debug.Log(data);
             PlayerManager.Singleton.AddPopulation(data.population);
         }
 

@@ -89,7 +89,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5458195974639148479}
   - component: {fileID: 1594288837220990520}
-  m_Layer: 0
+  - component: {fileID: 4937112258278325205}
+  - component: {fileID: 1827947650073289827}
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +125,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4937112258278325205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535353083804066101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cd83e34671b9241bd080f411bfe33f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1827947650073289827
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535353083804066101}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6320932475317114765
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,8 +297,6 @@ MonoBehaviour:
   canBeCollected: 1
   data: {fileID: 11400000, guid: 143e1ff383272354f9db735f392c9d53, type: 2}
   collectButton: {fileID: 8699995320894124497}
-  connectedRoad: []
-  isConectedToTheAutel: 0
 --- !u!1001 &1901667668933848333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,6 +368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122586902658669788, guid: dd4e71a3aff5f1f41809df4fb9b7f941,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4e71a3aff5f1f41809df4fb9b7f941, type: 3}

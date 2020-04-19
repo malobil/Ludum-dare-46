@@ -10,8 +10,10 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     public BuildingDatas data;
     public GameObject collectButton;
 
-    public List<Building> connectedRoad;
-    public bool isConectedToTheAutel = false ;
+    private List<Building> connectedRoad = new List<Building>() ;
+    private bool isConectedToTheAutel = false ;
+
+    private bool isProducting = false;
 
     public virtual void UnContruct()
     {
@@ -39,10 +41,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public virtual void OnEnter()
     {
-        if (canBeCollected)
-        {
-            StartCoroutine(cooldownMoney());
-        }
+
     }
 
     public virtual void DestroyMe()
@@ -61,9 +60,9 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         OnEnter();
     }
 
-    IEnumerator cooldownMoney()
+    IEnumerator Production()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(data.productionTime);
         Gain();
     }
 
@@ -75,19 +74,21 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     public virtual void Collect()
     {
         collectButton.SetActive(false);
-        StartCoroutine(cooldownMoney());
+       
         PlayerManager.Singleton.AddMoney(data.money);
         PlayerManager.Singleton.AddFaith(data.faith);
         PlayerManager.Singleton.AddEntertainment(data.entertainment);
         PlayerManager.Singleton.AddFood(data.food);
         PlayerManager.Singleton.AddPopulation(data.population);
         PlayerManager.Singleton.AddWater(data.water);
+        StartProduction();
     }
 
     public void ConnectToAutel()
     {
         isConectedToTheAutel = true;
         BuildingManager.Singleton.CheckedBuilding(this);
+        StartProduction();
 
         foreach(Building builds in connectedRoad)
         {
@@ -98,10 +99,28 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         }
     }
 
+    void StartProduction()
+    {
+        if(isConectedToTheAutel && !isProducting && canBeCollected)
+        {
+            isProducting = true;
+            StartCoroutine(Production());
+        }
+    }
+
+    void StopProduction()
+    {
+        if(isProducting)
+        {
+            StopCoroutine(Production());
+            isProducting = false;
+        }
+    }
+
     public void UnConnectToAutel()
     {
         isConectedToTheAutel = false;
-        Debug.Log("UNCONNECT");
+        StopProduction();
     }
 
     public void ConnectRoad(Building road)

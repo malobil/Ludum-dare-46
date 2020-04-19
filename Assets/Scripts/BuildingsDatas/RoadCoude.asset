@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RoadCoude
   m_EditorClassIdentifier: 
   buildingName: Road Coude
-  cost: 10
+  cost: 5
+  productionTime: 10
   faith: 0
   population: 0
   money: 0

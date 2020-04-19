@@ -9,6 +9,7 @@ public class BuildingDatas : ScriptableObject
     [Header("Build")]
     public float cost;
     [Header("Gain")]
+    public float productionTime;
     public float faith;
     public float population;
     public float money;

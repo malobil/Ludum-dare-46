@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
   m_Name: RoadT
   m_EditorClassIdentifier: 
-  buildingName: Road T
+  buildingName: Road
   cost: 5
   productionTime: 10
   faith: 0
@@ -26,3 +26,4 @@ MonoBehaviour:
   - {fileID: 3562330839169828565, guid: df79f5bb245daee4e9f0ac6a96360e57, type: 3}
   - {fileID: 367746956054595229, guid: f8e41be55dfe67642b3c4110a370252a, type: 3}
   - {fileID: 2696800026023945537, guid: 4cff4bd95db415047afdfc49b55a5c1c, type: 3}
+  tileSize: 1

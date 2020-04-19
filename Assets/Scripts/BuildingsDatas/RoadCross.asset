@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
   m_Name: RoadCross
   m_EditorClassIdentifier: 
-  buildingName: Road Cross
+  buildingName: Road
   cost: 10
   productionTime: 10
   faith: 0
@@ -23,3 +23,4 @@ MonoBehaviour:
   water: 0
   prefabs:
   - {fileID: 1939434214595235769, guid: 48031d97d0a75b543a476d46e7726ce8, type: 3}
+  tileSize: 1

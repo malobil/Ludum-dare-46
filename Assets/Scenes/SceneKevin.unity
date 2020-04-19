@@ -3997,6 +3997,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefabStatueGod
       objectReference: {fileID: 0}
+    - target: {fileID: 6973373605052039396, guid: e30b42421cbd6d5418de6cea13ae2300,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717473904939267128, guid: e30b42421cbd6d5418de6cea13ae2300,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e30b42421cbd6d5418de6cea13ae2300, type: 3}
 --- !u!1001 &7741772455899806218

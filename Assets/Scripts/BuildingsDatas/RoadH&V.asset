@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
   m_Name: RoadH&V
   m_EditorClassIdentifier: 
-  buildingName: Road H&V
+  buildingName: Road
   cost: 5
   productionTime: 10
   faith: 0
@@ -24,3 +24,4 @@ MonoBehaviour:
   prefabs:
   - {fileID: 2128413059586975373, guid: 536988be5d543aa4e8e3c4bdaacbd230, type: 3}
   - {fileID: 5576644644834558702, guid: 8bf86b60b2d940f438b607f6fb278571, type: 3}
+  tileSize: 1

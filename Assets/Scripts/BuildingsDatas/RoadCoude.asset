@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96776481ff2b93428c845f1f426025b, type: 3}
   m_Name: RoadCoude
   m_EditorClassIdentifier: 
-  buildingName: Road Coude
+  buildingName: Road
   cost: 5
   productionTime: 10
   faith: 0
@@ -26,3 +26,4 @@ MonoBehaviour:
   - {fileID: 7472838983550458362, guid: c322308b1ad785343affe6748e5df2b0, type: 3}
   - {fileID: 5779931613337783472, guid: 45d9986b372869240920ad3610b3287b, type: 3}
   - {fileID: 4969346440575064286, guid: 3655a7a2422f5bf46910a598d008aac8, type: 3}
+  tileSize: 1

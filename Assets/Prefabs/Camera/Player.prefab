@@ -68,7 +68,7 @@ MonoBehaviour:
   m_PreviewLayers:
     serializedVersion: 2
     m_Bits: 1
-  actualMoney: 10
+  actualMoney: 8800000
   actualFaith: 10
   actualFood: 10
   actualWater: 10
@@ -80,6 +80,11 @@ MonoBehaviour:
   waterLoosePerSecond: 0.2
   entertainmentLoosePerSecond: 0.2
   populationAdd: 1
+  prefabPeopleF: {fileID: 7453289173546008029, guid: c328362e95ba86e4e9b7f0af0bd16709,
+    type: 3}
+  prefabPeopleM: {fileID: 1807054657291577729, guid: 89f16407ffe2f8c4596b6bdc2cbd9ac3,
+    type: 3}
+  peoplePopPoint: {fileID: 0}
 --- !u!54 &3915769754764973937
 Rigidbody:
   m_ObjectHideFlags: 0

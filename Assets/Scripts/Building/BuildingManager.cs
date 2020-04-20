@@ -8,7 +8,7 @@ public class BuildingManager : MonoBehaviour
 
     public Building autel;
 
-    private List<Building> allBuildings = new List<Building>();
+    public List<Building> allBuildings;
 
     private List<Building> checkedBuilding = new List<Building>();
     private List<Building> buildingToCheck = new List<Building>();
@@ -23,18 +23,6 @@ public class BuildingManager : MonoBehaviour
         {
             Singleton = this;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void AddBuildingToList(Building buildingToAdd)
@@ -74,5 +62,11 @@ public class BuildingManager : MonoBehaviour
     public bool CheckIfBuildingIsCheck(Building toCheck)
     {
         return checkedBuilding.Contains(toCheck);
+    }
+
+    public Transform GetABuildingPosition()
+    {
+        int tempRdm = Random.Range(0, checkedBuilding.Count - 1);
+        return checkedBuilding[tempRdm].transform;
     }
 }

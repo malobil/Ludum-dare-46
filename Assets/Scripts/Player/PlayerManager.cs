@@ -18,28 +18,35 @@ public class PlayerManager : MonoBehaviour
     private BuildingDatas m_SelectedBuild;
 
     private int selectedBuildingRotation = 0;
-    
-    public float actualMoney ;
-    public float actualFaith ;
-    public float actualFood ;
-    public float actualWater ;
-    public float actualEntertainment ;
+
+    public float actualMoney;
+    public float actualFaith;
+    public float actualFood;
+    public float actualWater;
+    public float actualEntertainment;
     public float actualPopulation;
     public float actualPopulationCapacity;
 
     [Header("Balance")]
-    [SerializeField] private float faithLoosePerSecond ;
-    [SerializeField] private float foodLoosePerSecond ;
-    [SerializeField] private float waterLoosePerSecond ;
-    [SerializeField] private float entertainmentLoosePerSecond ;
-    [SerializeField] private float populationAdd ;
+    [SerializeField] private float faithLoosePerSecond;
+    [SerializeField] private float foodLoosePerSecond;
+    [SerializeField] private float waterLoosePerSecond;
+    [SerializeField] private float entertainmentLoosePerSecond;
+    [SerializeField] private float populationAdd;
 
-    private PlayerInput inputs ;
+    [Header("Population")]
+    public GameObject prefabPeopleF;
+    public GameObject prefabPeopleM;
+    public Transform peoplePopPoint;
+
+    private bool havePopAM = true;
+
+    private PlayerInput inputs;
     private Vector2 mousePosition;
 
     private void Awake()
     {
-        if(Singleton != null)
+        if (Singleton != null)
         {
             Destroy(this);
         }
@@ -54,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         inputs.InGameInputs.UnConstruct.performed += ctx => UnBuild();
         inputs.InGameInputs.RotateLeft.performed += ctx => RotateLeft();
         inputs.InGameInputs.RotateRight.performed += ctx => RotateRight();
-        inputs.Enable();   
+        inputs.Enable();
     }
 
     // Start is called before the first frame update
@@ -85,7 +92,7 @@ public class PlayerManager : MonoBehaviour
 
     private void SetupPreviewObjects()
     {
-        foreach(GameObject previews in previewBuildingList)
+        foreach (GameObject previews in previewBuildingList)
         {
             Destroy(previews);
         }
@@ -94,7 +101,7 @@ public class PlayerManager : MonoBehaviour
         previewBuildingList.Clear();
         selectedBuildingRotation = 0;
 
-        for(int i = 0; i < m_SelectedBuild.prefabs.Count; i++)
+        for (int i = 0; i < m_SelectedBuild.prefabs.Count; i++)
         {
             GameObject spawnedPrefab = Instantiate(m_SelectedBuild.prefabs[i]);
 
@@ -103,7 +110,7 @@ public class PlayerManager : MonoBehaviour
                 spawnedPrefab.GetComponent<Collider>().enabled = false;
             }
 
-            if(spawnedPrefab.GetComponent<Building>())
+            if (spawnedPrefab.GetComponent<Building>())
             {
                 spawnedPrefab.GetComponent<Building>().enabled = false;
             }
@@ -148,13 +155,13 @@ public class PlayerManager : MonoBehaviour
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
 
-            if (Physics.Raycast(mouseRay, out hitInfo,999f, m_PreviewLayers))
+            if (Physics.Raycast(mouseRay, out hitInfo, 999f, m_PreviewLayers))
             {
                 targetedConstructTerrain = hitInfo.transform.gameObject.GetComponentInParent<ConstructableTerrain>();
 
                 if (targetedConstructTerrain != null)
                 {
-                    if (!targetedConstructTerrain.CheckNearTile(actualPreviewBuilding.GetComponent<Building>().buildingDirection,m_SelectedBuild.tileSize))
+                    if (!targetedConstructTerrain.CheckNearTile(actualPreviewBuilding.GetComponent<Building>().buildingDirection, m_SelectedBuild.tileSize))
                     {
                         ChangeAllPreviewMatColor(m_PreviewColorError);
                     }
@@ -177,7 +184,7 @@ public class PlayerManager : MonoBehaviour
                 actualPreviewBuilding.SetActive(false);
             }
         }
-        else if(UIManager.Singleton.CheckCursorOnUI() && m_SelectedBuild != null)
+        else if (UIManager.Singleton.CheckCursorOnUI() && m_SelectedBuild != null)
         {
             actualPreviewBuilding.SetActive(false);
         }
@@ -185,23 +192,23 @@ public class PlayerManager : MonoBehaviour
 
     private void Build()
     {
-        if(m_SelectedBuild != null && !UIManager.Singleton.CheckCursorOnUI())
+        if (m_SelectedBuild != null && !UIManager.Singleton.CheckCursorOnUI())
         {
-                if (actualMoney >= m_SelectedBuild.cost)
+            if (actualMoney >= m_SelectedBuild.cost)
+            {
+                if (targetedConstructTerrain != null)
                 {
-                    if (targetedConstructTerrain != null)
-                    {
-                       targetedConstructTerrain.Construct(m_SelectedBuild, selectedBuildingRotation);
-                       AddMoney(-m_SelectedBuild.cost);
-                       UIManager.Singleton.UpdateMoneyText(actualMoney);
-                    }
+                    targetedConstructTerrain.Construct(m_SelectedBuild, selectedBuildingRotation);
+                    AddMoney(-m_SelectedBuild.cost);
+                    UIManager.Singleton.UpdateMoneyText(actualMoney);
                 }
+            }
         }
     }
 
     private void Collect()
     {
-        if(!UIManager.Singleton.CheckCursorOnUI())
+        if (!UIManager.Singleton.CheckCursorOnUI())
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
@@ -218,7 +225,7 @@ public class PlayerManager : MonoBehaviour
 
     private void UnBuild()
     {
-        if(!UIManager.Singleton.CheckCursorOnUI())
+        if (!UIManager.Singleton.CheckCursorOnUI())
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
@@ -235,11 +242,11 @@ public class PlayerManager : MonoBehaviour
 
     private void RotateLeft()
     {
-        if(m_SelectedBuild != null)
+        if (m_SelectedBuild != null)
         {
             if (selectedBuildingRotation <= 0)
             {
-                selectedBuildingRotation = m_SelectedBuild.prefabs.Count-1;
+                selectedBuildingRotation = m_SelectedBuild.prefabs.Count - 1;
             }
             else
             {
@@ -249,14 +256,14 @@ public class PlayerManager : MonoBehaviour
             actualPreviewBuilding.SetActive(false);
             actualPreviewBuilding = previewBuildingList[selectedBuildingRotation];
         }
-       
+
     }
 
     private void RotateRight()
     {
-        if(m_SelectedBuild != null)
+        if (m_SelectedBuild != null)
         {
-            if (selectedBuildingRotation >= m_SelectedBuild.prefabs.Count-1)
+            if (selectedBuildingRotation >= m_SelectedBuild.prefabs.Count - 1)
             {
                 selectedBuildingRotation = 0;
             }
@@ -278,7 +285,7 @@ public class PlayerManager : MonoBehaviour
 
     public void AddFaith(float addedValue)
     {
-        if(actualFaith + addedValue < 0)
+        if (actualFaith + addedValue < 0)
         {
             actualFaith = 0;
         }
@@ -286,7 +293,7 @@ public class PlayerManager : MonoBehaviour
         {
             actualFaith += addedValue;
         }
-       
+
         UIManager.Singleton.UpdateFaithText(actualFaith);
     }
 
@@ -357,7 +364,7 @@ public class PlayerManager : MonoBehaviour
             actualPopulation += addedValue;
         }
 
-        UIManager.Singleton.UpdatePopulationText(actualPopulation,actualPopulationCapacity);
+        UIManager.Singleton.UpdatePopulationText(actualPopulation, actualPopulationCapacity);
     }
 
     public void AddPopulationCapacity(float addedValue)
@@ -371,7 +378,7 @@ public class PlayerManager : MonoBehaviour
             actualPopulationCapacity += addedValue;
         }
 
-        UIManager.Singleton.UpdatePopulationText(actualPopulation,actualPopulationCapacity);
+        UIManager.Singleton.UpdatePopulationText(actualPopulation, actualPopulationCapacity);
     }
 
     IEnumerator LooseRessources()
@@ -388,12 +395,28 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(15f);
         AddPopulation(populationAdd);
+        SpawnAnHabitant();
         StartCoroutine(GainPop());
+    }
+
+    void SpawnAnHabitant()
+    {
+        if (havePopAM)
+        {
+            Instantiate(prefabPeopleF, peoplePopPoint.position, prefabPeopleF.transform.rotation);
+            havePopAM = false;
+        }
+        else
+        {
+            Instantiate(prefabPeopleM, peoplePopPoint.position, prefabPeopleF.transform.rotation);
+            havePopAM = true;
+        }
+
     }
 
     void ChangeAllPreviewMatColor(Color newColor)
     {
-        foreach(Material mats in previewBuildingMaterials)
+        foreach (Material mats in previewBuildingMaterials)
         {
             mats.color = newColor;
         }

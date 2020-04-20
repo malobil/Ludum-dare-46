@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RoadCross
   m_EditorClassIdentifier: 
   buildingName: Road
-  cost: 10
+  cost: 15
   productionTime: 0
   faith: 0
   population: 0

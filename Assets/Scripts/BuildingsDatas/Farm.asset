@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Farm
   m_EditorClassIdentifier: 
   buildingName: Farm
-  cost: 15
+  cost: 20
   productionTime: 15
   faith: 0
   population: 0

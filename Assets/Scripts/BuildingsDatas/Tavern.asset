@@ -18,7 +18,7 @@ MonoBehaviour:
   faith: 0
   population: 0
   money: 0
-  entertainment: 1
+  entertainment: 10
   food: 0
   water: 0
   prefabs:

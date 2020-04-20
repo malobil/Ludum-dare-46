@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3915769754764973939}
   - component: {fileID: 3915769754764973936}
   - component: {fileID: 3915769754764973937}
+  - component: {fileID: 1611201599}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -68,18 +69,20 @@ MonoBehaviour:
   m_PreviewLayers:
     serializedVersion: 2
     m_Bits: 1
-  actualMoney: 8800000
-  actualFaith: 10
-  actualFood: 10
-  actualWater: 10
-  actualEntertainment: 10
-  actualPopulation: 0
+  actualMoney: 200
+  actualFaith: 50
+  actualFood: 50
+  actualWater: 50
+  actualEntertainment: 50
+  actualPopulation: 1
   actualPopulationCapacity: 0
   faithLoosePerSecond: 0.2
   foodLoosePerSecond: 0.2
   waterLoosePerSecond: 0.2
   entertainmentLoosePerSecond: 0.2
   populationAdd: 1
+  ressourceLooseAddPerHab: 0.2
+  faithToWin: 1000
   prefabPeopleF: {fileID: 7453289173546008029, guid: c328362e95ba86e4e9b7f0af0bd16709,
     type: 3}
   prefabPeopleM: {fileID: 1807054657291577729, guid: 89f16407ffe2f8c4596b6bdc2cbd9ac3,
@@ -100,7 +103,20 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!135 &1611201599
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3915769754764973902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9078392459584520970
 GameObject:
   m_ObjectHideFlags: 0

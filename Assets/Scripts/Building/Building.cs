@@ -92,7 +92,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public virtual void Collect()
     {
-        if(!isProducting)
+        if(!isProducting && isConectedToTheAutel)
         {
             collectButton.SetActive(false);
 

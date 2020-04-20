@@ -72,7 +72,6 @@ public class BuildingManager : MonoBehaviour
 
     public void CollectAllHouse()
     {
-        Time.timeScale = 0;
         for(int i = 0; i< allBuildings.Count; i++)
         {
             if(allBuildings[i].GetComponent<House>())
@@ -80,13 +79,10 @@ public class BuildingManager : MonoBehaviour
                 allBuildings[i].Collect();
             }
         }
-
-        Time.timeScale = 1;
     }
 
     public void CollectAllTavern()
     {
-        Time.timeScale = 0;
         for (int i = 0; i < allBuildings.Count; i++)
         {
             if (allBuildings[i].GetComponent<Tavern>())
@@ -94,12 +90,10 @@ public class BuildingManager : MonoBehaviour
                 allBuildings[i].Collect();
             }
         }
-        Time.timeScale = 1;
     }
 
     public void CollectAllWell()
     {
-        Time.timeScale = 0;
         for (int i = 0; i < allBuildings.Count; i++)
         {
             if (allBuildings[i].GetComponent<Well>())
@@ -107,12 +101,10 @@ public class BuildingManager : MonoBehaviour
                 allBuildings[i].Collect();
             }
         }
-        Time.timeScale = 1;
     }
 
     public void CollectAllFarm()
     {
-        Time.timeScale = 0;
         for (int i = 0; i < allBuildings.Count; i++)
         {
             if (allBuildings[i].GetComponent<Farm>())
@@ -120,6 +112,5 @@ public class BuildingManager : MonoBehaviour
                 allBuildings[i].Collect();
             }
         }
-        Time.timeScale = 1;
     }
 }

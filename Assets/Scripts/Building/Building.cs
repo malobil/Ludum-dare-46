@@ -81,6 +81,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     IEnumerator Production()
     {
+        Debug.Log(gameObject.name);
         yield return new WaitForSeconds(data.productionTime);
         Gain();
     }
@@ -114,10 +115,17 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public virtual void ConnectToAutel()
     {
+        if (!isProducting && !isConectedToTheAutel)
+        {
+           
+            StartProduction();
+        }
+
         isConectedToTheAutel = true;
         BuildingManager.Singleton.CheckedBuilding(this);
-        StartProduction();
-     
+
+        
+
         foreach (Building builds in connectedRoad)
         {
             if(!BuildingManager.Singleton.CheckIfBuildingIsCheck(builds))
@@ -131,7 +139,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     void StartProduction()
     {
-        if(isConectedToTheAutel && !isProducting && canBeCollected)
+        if(!isProducting && canBeCollected)
         {
             isProducting = true;
             haveEndProduction = false;

@@ -223,7 +223,6 @@ public class PlayerManager : MonoBehaviour
 
             if (Physics.Raycast(mouseRay, out hitInfo))
             {
-                Debug.Log(hitInfo.collider.gameObject);
                 if (hitInfo.transform.gameObject.CompareTag("Collect"))
                 {
                     hitInfo.transform.gameObject.GetComponentInParent<Building>().CollectThisType();

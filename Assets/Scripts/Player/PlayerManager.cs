@@ -61,6 +61,7 @@ public class PlayerManager : MonoBehaviour
         inputs.InGameInputs.UnConstruct.performed += ctx => UnBuild();
         inputs.InGameInputs.RotateLeft.performed += ctx => RotateLeft();
         inputs.InGameInputs.RotateRight.performed += ctx => RotateRight();
+        inputs.InGameInputs.Pause.performed += ctx => PauseGame();
         inputs.Enable();
     }
 
@@ -432,6 +433,11 @@ public class PlayerManager : MonoBehaviour
         mat.EnableKeyword("_ALPHABLEND_ON");
         mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
         mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+    }
+
+    void PauseGame()
+    {
+        UIManager.Singleton.TogglePause();
     }
 
 }

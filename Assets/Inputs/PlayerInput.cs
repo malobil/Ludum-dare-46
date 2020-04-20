@@ -89,6 +89,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""609dbc46-e3df-4156-af67-89060548949b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -234,6 +242,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""MouseWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be12e1ac-d91e-428f-8509-264a171fa889"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +270,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_InGameInputs_RotateLeft = m_InGameInputs.FindAction("RotateLeft", throwIfNotFound: true);
         m_InGameInputs_RotateRight = m_InGameInputs.FindAction("RotateRight", throwIfNotFound: true);
         m_InGameInputs_MouseWheel = m_InGameInputs.FindAction("MouseWheel", throwIfNotFound: true);
+        m_InGameInputs_Pause = m_InGameInputs.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -309,6 +329,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_InGameInputs_RotateLeft;
     private readonly InputAction m_InGameInputs_RotateRight;
     private readonly InputAction m_InGameInputs_MouseWheel;
+    private readonly InputAction m_InGameInputs_Pause;
     public struct InGameInputsActions
     {
         private @PlayerInput m_Wrapper;
@@ -322,6 +343,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @RotateLeft => m_Wrapper.m_InGameInputs_RotateLeft;
         public InputAction @RotateRight => m_Wrapper.m_InGameInputs_RotateRight;
         public InputAction @MouseWheel => m_Wrapper.m_InGameInputs_MouseWheel;
+        public InputAction @Pause => m_Wrapper.m_InGameInputs_Pause;
         public InputActionMap Get() { return m_Wrapper.m_InGameInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -358,6 +380,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MouseWheel.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnMouseWheel;
+                @Pause.started -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_InGameInputsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_InGameInputsActionsCallbackInterface = instance;
             if (instance != null)
@@ -389,6 +414,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @MouseWheel.started += instance.OnMouseWheel;
                 @MouseWheel.performed += instance.OnMouseWheel;
                 @MouseWheel.canceled += instance.OnMouseWheel;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -404,5 +432,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnRotateLeft(InputAction.CallbackContext context);
         void OnRotateRight(InputAction.CallbackContext context);
         void OnMouseWheel(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

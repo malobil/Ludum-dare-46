@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_PreviewEntertainmentText;
     [SerializeField] private TextMeshProUGUI m_PreviewPopulationText;
 
+    [Header("Pause")]
+    [SerializeField] private GameObject m_PauseUI ;
+
     [Header("Event system")]
     [SerializeField] private EventSystem m_EventSyst;
 
@@ -95,5 +98,24 @@ public class UIManager : MonoBehaviour
     public bool CheckCursorOnUI()
     {
         return m_EventSyst.IsPointerOverGameObject() ;
+    }
+
+    public void TogglePause()
+    {
+        if(m_PauseUI.activeSelf)
+        {
+            m_PauseUI.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            m_PauseUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
  }

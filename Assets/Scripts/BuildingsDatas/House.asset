@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: House
   m_EditorClassIdentifier: 
   buildingName: House
-  cost: 20
+  cost: 10
   productionTime: 10
   faith: 0
   population: 2

@@ -12,7 +12,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     public GameObject collectButton;
 
     private List<Building> connectedRoad = new List<Building>() ;
-    private bool isConectedToTheAutel = false ;
+    protected bool isConectedToTheAutel = false ;
 
     private bool isProducting = false;
 
@@ -42,7 +42,6 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     {
         foreach(ConstructableTerrain tiles in constructTile)
         {
-            Debug.Log(tiles.gameObject);
             previousTiles.Add(tiles);
         }
 
@@ -103,13 +102,8 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         StartProduction();
     }
 
-    public void ConnectToAutel()
+    public virtual void ConnectToAutel()
     {
-        if(!isConectedToTheAutel)
-        {
-            PlayerManager.Singleton.AddPopulationCapacity(data.population);
-        }
-
         isConectedToTheAutel = true;
         BuildingManager.Singleton.CheckedBuilding(this);
         StartProduction();

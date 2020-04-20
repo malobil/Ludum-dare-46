@@ -80,6 +80,7 @@ MonoBehaviour:
   foodLoosePerSecond: 0.2
   waterLoosePerSecond: 0.2
   entertainmentLoosePerSecond: 0.2
+  timeToAddPopulation: 15
   populationAdd: 1
   ressourceLooseAddPerHab: 0.2
   faithToWin: 1000

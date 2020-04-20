@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: House
   cost: 10
-  productionTime: 10
+  productionTime: 15
   faith: 0
   population: 2
-  money: 5
+  money: 20
   entertainment: 0
   food: 0
   water: 0

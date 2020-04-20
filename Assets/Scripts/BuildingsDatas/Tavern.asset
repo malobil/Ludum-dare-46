@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Tavern
   cost: 20
-  productionTime: 15
+  productionTime: 25
   faith: 0
   population: 0
   money: 0
-  entertainment: 10
+  entertainment: 25
   food: 0
   water: 0
   prefabs:

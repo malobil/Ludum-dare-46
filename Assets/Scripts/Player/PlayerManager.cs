@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float foodLoosePerSecond;
     [SerializeField] private float waterLoosePerSecond;
     [SerializeField] private float entertainmentLoosePerSecond;
+    [SerializeField] private float timeToAddPopulation = 15f;
     [SerializeField] private float populationAdd;
     [SerializeField] private float ressourceLooseAddPerHab = 1f ;
 
@@ -426,7 +427,7 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator GainPop()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(timeToAddPopulation);
         AddPopulation(populationAdd);
         SpawnAnHabitant();
         StartCoroutine(GainPop());

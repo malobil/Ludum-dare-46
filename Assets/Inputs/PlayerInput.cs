@@ -105,17 +105,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""528d3641-d9c2-46ac-b820-e48692a02186"",
-                    ""path"": ""<XInputController>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Construct"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a79c44de-6c76-4459-af4a-2151aca68a16"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",

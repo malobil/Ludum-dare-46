@@ -121,28 +121,45 @@ public abstract class ConstructableTerrain : MonoBehaviour, IConstructable
                     {
                         return false;
                     }
-                    break;
+                if (!connectedTilesUp.gameObject.activeSelf)
+                {
+                    return false;
+                }
+                break;
 
                 case Direction.Down:
                     if (connectedTilesDown == null)
                     {
                         return false;
                     }
-                    break;
+                if (!connectedTilesDown.gameObject.activeSelf)
+                {
+                    return false;
+                }
+                break;
 
                 case Direction.Left:
                     if (connectedTilesLeft == null)
                     {
                         return false;
                     }
-                    break;
+                if (!connectedTilesLeft.gameObject.activeSelf)
+                {
+                    return false;
+                }
+                break;
 
                 case Direction.Right:
                     if (connectedTilesRight == null)
                     {
                         return false;
                     }
-                    break;
+                    
+                if (!connectedTilesRight.gameObject.activeSelf)
+                    {
+                        return false;
+                    }
+                break;
             }
 
         return true;

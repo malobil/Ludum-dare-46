@@ -13,4 +13,10 @@ public class House : Building
 
         base.ConnectToAutel();
     }
+
+    public override void CollectThisType()
+    {
+        BuildingManager.Singleton.CollectAllHouse();
+        base.CollectThisType();
+    }
 }

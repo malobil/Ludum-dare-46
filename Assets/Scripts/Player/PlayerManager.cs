@@ -225,7 +225,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if (hitInfo.transform.gameObject.CompareTag("Collect"))
                 {
-                    hitInfo.transform.gameObject.GetComponentInParent<Building>().Collect();
+                    hitInfo.transform.gameObject.GetComponentInParent<Building>().CollectThisType();
                 }
             }
         }

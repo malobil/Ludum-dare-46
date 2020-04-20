@@ -69,4 +69,48 @@ public class BuildingManager : MonoBehaviour
         int tempRdm = Random.Range(0, checkedBuilding.Count - 1);
         return checkedBuilding[tempRdm].transform;
     }
+
+    public void CollectAllHouse()
+    {
+        for(int i = 0; i< allBuildings.Count; i++)
+        {
+            if(allBuildings[i].GetComponent<House>())
+            {
+                allBuildings[i].Collect();
+            }
+        }
+    }
+
+    public void CollectAllTavern()
+    {
+        for (int i = 0; i < allBuildings.Count; i++)
+        {
+            if (allBuildings[i].GetComponent<Tavern>())
+            {
+                allBuildings[i].Collect();
+            }
+        }
+    }
+
+    public void CollectAllWell()
+    {
+        for (int i = 0; i < allBuildings.Count; i++)
+        {
+            if (allBuildings[i].GetComponent<Well>())
+            {
+                allBuildings[i].Collect();
+            }
+        }
+    }
+
+    public void CollectAllFarm()
+    {
+        for (int i = 0; i < allBuildings.Count; i++)
+        {
+            if (allBuildings[i].GetComponent<Farm>())
+            {
+                allBuildings[i].Collect();
+            }
+        }
+    }
 }

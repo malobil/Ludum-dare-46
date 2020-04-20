@@ -92,14 +92,22 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public virtual void Collect()
     {
-        collectButton.SetActive(false);
-       
-        PlayerManager.Singleton.AddMoney(data.money);
-        PlayerManager.Singleton.AddFaith(data.faith);
-        PlayerManager.Singleton.AddEntertainment(data.entertainment);
-        PlayerManager.Singleton.AddFood(data.food);
-        PlayerManager.Singleton.AddWater(data.water);
-        StartProduction();
+        if(!isProducting)
+        {
+            collectButton.SetActive(false);
+
+            PlayerManager.Singleton.AddMoney(data.money);
+            PlayerManager.Singleton.AddFaith(data.faith);
+            PlayerManager.Singleton.AddEntertainment(data.entertainment);
+            PlayerManager.Singleton.AddFood(data.food);
+            PlayerManager.Singleton.AddWater(data.water);
+            StartProduction();
+        }
+    }
+
+    public virtual void CollectThisType()
+    {
+
     }
 
     public virtual void ConnectToAutel()

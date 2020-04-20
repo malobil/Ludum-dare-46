@@ -69,21 +69,21 @@ MonoBehaviour:
   m_PreviewLayers:
     serializedVersion: 2
     m_Bits: 1
-  actualMoney: 200
+  actualMoney: 10
   actualFaith: 50
   actualFood: 50
   actualWater: 50
   actualEntertainment: 50
   actualPopulation: 1
   actualPopulationCapacity: 0
-  faithLoosePerSecond: 0.2
-  foodLoosePerSecond: 0.2
-  waterLoosePerSecond: 0.2
-  entertainmentLoosePerSecond: 0.2
-  timeToAddPopulation: 15
+  faithLoosePerSecond: 0.1
+  foodLoosePerSecond: 0.1
+  waterLoosePerSecond: 0.1
+  entertainmentLoosePerSecond: 0.1
+  timeToAddPopulation: 30
   populationAdd: 1
   ressourceLooseAddPerHab: 0.2
-  faithToWin: 1000
+  faithToWin: 300
   prefabPeopleF: {fileID: 7453289173546008029, guid: c328362e95ba86e4e9b7f0af0bd16709,
     type: 3}
   prefabPeopleM: {fileID: 1807054657291577729, guid: 89f16407ffe2f8c4596b6bdc2cbd9ac3,

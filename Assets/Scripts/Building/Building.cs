@@ -107,7 +107,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     {
         if(!isConectedToTheAutel)
         {
-            PlayerManager.Singleton.AddPopulation(data.population);
+            PlayerManager.Singleton.AddPopulationCapacity(data.population);
         }
 
         isConectedToTheAutel = true;
@@ -147,7 +147,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     {
         if(isConectedToTheAutel)
         {
-            PlayerManager.Singleton.AddPopulation(-data.population);
+            PlayerManager.Singleton.AddPopulationCapacity(-data.population);
         }
 
         isConectedToTheAutel = false;

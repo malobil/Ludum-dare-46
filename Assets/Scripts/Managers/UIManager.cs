@@ -66,9 +66,9 @@ public class UIManager : MonoBehaviour
         m_EntertainmentText.text = newValue.ToString("F0");
     }
 
-    public void UpdatePopulationText(float newValue)
+    public void UpdatePopulationText(float population, float populationCapacity)
     {
-        m_PopText.text = newValue.ToString("F0");
+        m_PopText.text = population.ToString("F0") + "/" + populationCapacity.ToString("F0");
     }
 
     public void SetupPreviewDataInfos(BuildingDatas data)

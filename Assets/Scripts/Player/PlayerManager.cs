@@ -24,14 +24,15 @@ public class PlayerManager : MonoBehaviour
     public float actualFood ;
     public float actualWater ;
     public float actualEntertainment ;
-    public float actualPeople ;
+    public float actualPopulation;
+    public float actualPopulationCapacity;
 
     [Header("Balance")]
     [SerializeField] private float faithLoosePerSecond ;
     [SerializeField] private float foodLoosePerSecond ;
     [SerializeField] private float waterLoosePerSecond ;
     [SerializeField] private float entertainmentLoosePerSecond ;
-
+    [SerializeField] private float populationAdd ;
 
     private PlayerInput inputs ;
     private Vector2 mousePosition;
@@ -63,9 +64,10 @@ public class PlayerManager : MonoBehaviour
         UIManager.Singleton.UpdateEntertainmentText(actualEntertainment);
         UIManager.Singleton.UpdateFaithText(actualFaith);
         UIManager.Singleton.UpdateFoodText(actualFood);
-        UIManager.Singleton.UpdatePopulationText(actualPeople);
+        UIManager.Singleton.UpdatePopulationText(actualPopulation, actualPopulationCapacity);
         UIManager.Singleton.UpdateWaterText(actualWater);
         StartCoroutine(LooseRessources());
+        StartCoroutine(GainPop());
     }
 
     // Update is called once per frame
@@ -346,16 +348,30 @@ public class PlayerManager : MonoBehaviour
 
     public void AddPopulation(float addedValue)
     {
-        if (actualPeople + addedValue < 0)
+        if (actualPopulation + addedValue < 0)
         {
-            actualPeople = 0;
+            actualPopulation = 0;
         }
         else
         {
-            actualPeople += addedValue;
+            actualPopulation += addedValue;
         }
 
-        UIManager.Singleton.UpdatePopulationText(actualPeople);
+        UIManager.Singleton.UpdatePopulationText(actualPopulation,actualPopulationCapacity);
+    }
+
+    public void AddPopulationCapacity(float addedValue)
+    {
+        if (actualPopulationCapacity + addedValue < 0)
+        {
+            actualPopulationCapacity = 0;
+        }
+        else
+        {
+            actualPopulationCapacity += addedValue;
+        }
+
+        UIManager.Singleton.UpdatePopulationText(actualPopulation,actualPopulationCapacity);
     }
 
     IEnumerator LooseRessources()
@@ -366,6 +382,13 @@ public class PlayerManager : MonoBehaviour
         AddWater(-waterLoosePerSecond);
         AddEntertainment(-entertainmentLoosePerSecond);
         StartCoroutine(LooseRessources());
+    }
+
+    IEnumerator GainPop()
+    {
+        yield return new WaitForSeconds(15f);
+        AddPopulation(populationAdd);
+        StartCoroutine(GainPop());
     }
 
     void ChangeAllPreviewMatColor(Color newColor)

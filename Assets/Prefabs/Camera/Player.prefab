@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1979733d1e5ef4ba21929685084ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
-  sensitivity: 10
-  zoomSensitivity: 10
+  moveSpeed: 40
+  sensitivity: 15
+  zoomSensitivity: 50
   rbCamera: {fileID: 3915769754764973937}
   cam: {fileID: 9078392459584520970}
 --- !u!114 &3915769754764973936
@@ -64,16 +64,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PreviewColor: {r: 0.2971698, g: 0.63543653, b: 1, a: 0.6392157}
-  actualMoney: 1000
-  actualFaith: 0
-  actualFood: 0
-  actualWater: 0
-  actualEntertainment: 0
-  actualPeople: 0
-  faithLoosePerSecond: 0.7
-  foodLoosePerSecond: 0.5
-  waterLoosePerSecond: 10
-  entertainmentLoosePerSecond: 10
+  m_PreviewColorError: {r: 1, g: 0.18396229, b: 0.25760543, a: 0.6392157}
+  m_PreviewLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  actualMoney: 10
+  actualFaith: 10
+  actualFood: 10
+  actualWater: 10
+  actualEntertainment: 10
+  actualPopulation: 0
+  actualPopulationCapacity: 0
+  faithLoosePerSecond: 0.2
+  foodLoosePerSecond: 0.2
+  waterLoosePerSecond: 0.2
+  entertainmentLoosePerSecond: 0.2
+  populationAdd: 1
 --- !u!54 &3915769754764973937
 Rigidbody:
   m_ObjectHideFlags: 0

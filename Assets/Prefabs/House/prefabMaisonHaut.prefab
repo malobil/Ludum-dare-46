@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a040fd8dee714f34c94a03b8fe1603d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeDestroy: 1
   canBeCollected: 1
   data: {fileID: 11400000, guid: 002efb9f6b1138c409cf97087efb7b54, type: 2}
+  buildingDirection: 0
   collectButton: {fileID: 6282152671196840835}
-  connectedRoad: []
 --- !u!1 &5325092940877713630
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +64,8 @@ GameObject:
   - component: {fileID: 1532844090719310274}
   - component: {fileID: 453265591576839002}
   - component: {fileID: 6172858888103789186}
-  m_Layer: 0
+  - component: {fileID: 4019544900380930261}
+  m_Layer: 11
   m_Name: maison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +147,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 162588187098763313, guid: b5543be006e491349bd3fcc634d58f5c, type: 3}
+--- !u!114 &4019544900380930261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325092940877713630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 7705180533678198237
+  updateError: 0.5
+  checkTime: 0.2
 --- !u!1 &5620971783809137671
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,6 +67,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8816117228928505902, guid: 9367209eaa6b4d14fb0d0058aa92fa7c, type: 3}
+--- !u!114 &8330705876102399462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944278836843586015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 1585008834789767189
+  updateError: 1
+  checkTime: 0.2
 --- !u!1 &7298596022251520668
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: taverne
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9367209eaa6b4d14fb0d0058aa92fa7c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9367209eaa6b4d14fb0d0058aa92fa7c, type: 3}

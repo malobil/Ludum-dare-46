@@ -217,6 +217,7 @@ MonoBehaviour:
   canBeDestroy: 1
   canBeCollected: 1
   data: {fileID: 11400000, guid: 143e1ff383272354f9db735f392c9d53, type: 2}
+  buildingDirection: 0
   collectButton: {fileID: 1883133209147716237}
 --- !u!1 &6397871610823970715
 GameObject:
@@ -229,7 +230,9 @@ GameObject:
   - component: {fileID: 3625663567518459046}
   - component: {fileID: 4717650018509186115}
   - component: {fileID: 3199665630899639068}
-  m_Layer: 0
+  - component: {fileID: 3926121250014879595}
+  - component: {fileID: 6387265131314873215}
+  m_Layer: 11
   m_Name: puit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,6 +300,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3926121250014879595
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397871610823970715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6669489239394137644, guid: 4350a6204bf809c4fbc21afc5a757fe1, type: 3}
+--- !u!114 &6387265131314873215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397871610823970715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 7421659371128508072
+  updateError: 1
+  checkTime: 0.2
 --- !u!1001 &8717483026821181009
 PrefabInstance:
   m_ObjectHideFlags: 0

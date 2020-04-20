@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Pause")]
     [SerializeField] private GameObject m_PauseUI ;
+
+    [Header("End")]
+    [SerializeField] private GameObject m_VictoryUI;
+    [SerializeField] private GameObject m_LooseUI;
 
     [Header("Event system")]
     [SerializeField] private EventSystem m_EventSyst;
@@ -100,6 +105,16 @@ public class UIManager : MonoBehaviour
         return m_EventSyst.IsPointerOverGameObject() ;
     }
 
+    public void ShowVictory()
+    {
+        m_VictoryUI.SetActive(true);
+    }
+
+    public void ShowLosse()
+    {
+        m_LooseUI.SetActive(true);
+    }
+
     public void TogglePause()
     {
         if(m_PauseUI.activeSelf)
@@ -117,5 +132,10 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
  }

@@ -33,6 +33,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float waterLoosePerSecond;
     [SerializeField] private float entertainmentLoosePerSecond;
     [SerializeField] private float populationAdd;
+    [SerializeField] private float ressourceLooseAddPerHab = 1f ;
+
+
+    [SerializeField] private float faithToWin;
 
     [Header("Population")]
     public GameObject prefabPeopleF;
@@ -43,6 +47,8 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerInput inputs;
     private Vector2 mousePosition;
+
+    private bool gameIsPEnd= false;
 
     private void Awake()
     {
@@ -156,7 +162,7 @@ public class PlayerManager : MonoBehaviour
             Ray mouseRay = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hitInfo;
 
-            if (Physics.Raycast(mouseRay, out hitInfo, 999f, m_PreviewLayers))
+            if (Physics.Raycast(mouseRay, out hitInfo, 999f, m_PreviewLayers) && !hitInfo.transform.gameObject.CompareTag("Collect"))
             {
                 targetedConstructTerrain = hitInfo.transform.gameObject.GetComponentInParent<ConstructableTerrain>();
 
@@ -296,6 +302,20 @@ public class PlayerManager : MonoBehaviour
         }
 
         UIManager.Singleton.UpdateFaithText(actualFaith);
+
+        if(actualFaith <= 0)
+        {
+            UIManager.Singleton.ShowLosse();
+            gameIsPEnd = true;
+            inputs.Disable();
+        }
+
+        if (actualFaith >= faithToWin)
+        {
+            UIManager.Singleton.ShowVictory();
+            gameIsPEnd = true;
+            inputs.Disable();
+        }
     }
 
     public void AddMoney(float addedValue)
@@ -366,6 +386,9 @@ public class PlayerManager : MonoBehaviour
         }
 
         UIManager.Singleton.UpdatePopulationText(actualPopulation, actualPopulationCapacity);
+        foodLoosePerSecond += ressourceLooseAddPerHab;
+        waterLoosePerSecond += ressourceLooseAddPerHab;
+        entertainmentLoosePerSecond += ressourceLooseAddPerHab;
     }
 
     public void AddPopulationCapacity(float addedValue)
@@ -385,7 +408,16 @@ public class PlayerManager : MonoBehaviour
     IEnumerator LooseRessources()
     {
         yield return new WaitForSeconds(1f);
-        AddFaith(-faithLoosePerSecond);
+
+        if(actualEntertainment <= 0 || actualFood <= 0 || actualWater <= 0 || actualPopulation > actualPopulationCapacity)
+        {
+            AddFaith(-faithLoosePerSecond);
+        }
+        else
+        {
+            AddFaith(faithLoosePerSecond);
+        }
+
         AddFood(-foodLoosePerSecond);
         AddWater(-waterLoosePerSecond);
         AddEntertainment(-entertainmentLoosePerSecond);

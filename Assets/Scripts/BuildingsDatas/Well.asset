@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Well
   cost: 15
-  productionTime: 25
+  productionTime: 20
   faith: 0
   population: 0
   money: 0
   entertainment: 0
   food: 0
-  water: 25
+  water: 10
   prefabs:
   - {fileID: 7372831370410144976, guid: 057fc72a9af399946860ef56f13b13ed, type: 3}
   - {fileID: 8538762982757807113, guid: e5a026bc8206e064dba0bee28362a0e4, type: 3}

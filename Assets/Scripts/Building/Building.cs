@@ -15,6 +15,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
     protected bool isConectedToTheAutel = false ;
 
     private bool isProducting = false;
+    private bool haveEndProduction = false;
 
     public virtual void UnContruct()
     {
@@ -86,13 +87,14 @@ public abstract class Building : MonoBehaviour, IUnconstructable
 
     public void Gain()
     {
+        StopProduction();
+        haveEndProduction = true;
         collectButton.SetActive(true);
-        isProducting = false;
     }
 
     public virtual void Collect()
     {
-        if(!isProducting && isConectedToTheAutel)
+        if(haveEndProduction)
         {
             collectButton.SetActive(false);
 
@@ -132,6 +134,7 @@ public abstract class Building : MonoBehaviour, IUnconstructable
         if(isConectedToTheAutel && !isProducting && canBeCollected)
         {
             isProducting = true;
+            haveEndProduction = false;
             StartCoroutine(Production());
         }
     }
